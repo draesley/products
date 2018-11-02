@@ -1,0 +1,44 @@
+export const Menu = [
+    {
+        title:'Main',
+        icon:'fa fa-folder-open-o',
+        submenu:[
+            {
+                title:'Dashboard',
+                icon:'',
+                url:'/dashboard'
+            }
+        ]
+    },
+    {
+        title:'Maintenance',
+        icon:'fa fa-gear',
+        submenu:[
+            {
+                title:'Attribute',
+                icon:'objects_key-25',
+                url:'/attribute'
+            },
+            {
+                title:'Category',
+                icon:'',
+                url:'/category'
+            },
+            {
+                title:'Line',
+                icon:'',
+                url:'/line'
+            },
+            {
+                title:'SubLine',
+                icon:'',
+                url:'/subline'
+            },
+            {
+                title:'Product',
+                icon:'',
+                url:'/product'
+            }
+        ]
+    }
+]

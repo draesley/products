@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Create</label>
+                    <input type="text" name="name" [(ngModel)]="name" class="form-control" aria-describedby="name" placeholder="Name">
+                </div>
+                <button type="button" class="btn btn-success btn-rounded btn-block" (click)="save()">Save</button>
+            </div>
+        </div>
+        <div class="card" *ngIf="showcar">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Update</label>
+                    <input type="text" name="nameUpdate" [(ngModel)]="nameUpdate" class="form-control" aria-describedby="name" placeholder="Name">
+                </div>
+                <button type="button" class="btn btn-primary btn-rounded btn-block" (click)=update()>Update</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-wrapper-scroll-y">
+                    <table class="table" id="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Update</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let attribute of attributeList">
+                                <th scope="row">{{attribute.id}}</th>
+                                <td>{{attribute.name}}</td>
+                                <td><i class="fa fa-edit" (click)="showCard(attribute)"></i></td>
+                                <td><i class="fa fa-trash-o" (click)="delete(attribute.id)"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
