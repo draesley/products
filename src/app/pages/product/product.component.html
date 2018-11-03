@@ -1,3 +1,117 @@
-<p>
-  product works!
-</p>
+<!-- save product -->
+<div class="row" *ngIf="show">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-title text-center">
+                Create Product
+                <i class="fa fa-times-circle pointer" (click)="show = false"></i>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Detail</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="code" [(ngModel)]="model.code" class="form-control" placeholder="Code"></td>
+                            <td><input type="text" name="name" [(ngModel)]="model.name" class="form-control" placeholder="name" required></td>
+                            <td><input type="text" name="detail" [(ngModel)]="model.detail" class="form-control" placeholder="Detail"></td>
+                            <td>
+                                <select class="form-control" name="categoryId" [(ngModel)]="model.categoryId">
+                                    <option *ngFor="let category of subCategoryList" [ngValue] ="category.id">{{category.name}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><button type="button" class="btn btn-success btn-rounded" (click)="save(model)">Save</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- cierre save -->
+<!-- update product -->
+<div class="row" *ngIf="showup">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-title text-center">
+                Update Product
+                <i class="fa fa-times-circle pointer" (click)="showup = false"></i>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Detail</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="code" [(ngModel)]="modelUp.code" class="form-control" placeholder="Code"></td>
+                            <td><input type="text" name="name" [(ngModel)]="modelUp.name" class="form-control" placeholder="Name" required></td>
+                            <td><input type="text" name="detail" [(ngModel)]="modelUp.detail" class="form-control" placeholder="Detail"></td>
+                            <td>
+                                <select class="form-control" name="categoryId" [(ngModel)]="modelUp.categoryId">
+                                        <option *ngFor="let category of subCategoryList" [ngValue] ="category.id">{{category.name}}</option>
+                                    </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><button type="button" class="btn btn-success btn-rounded" (click)="update(modelUp)">Update</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- cierre update -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-wrapper-scroll-y">
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Detail</th>
+                                <th>Category</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of productList">
+                                <td>{{product.id}}</td>
+                                <td>{{product.code}}</td>
+                                <td>{{product.name}}</td>
+                                <td>{{product.detail}}</td>
+                                <td>{{product.categoryId.name}}</td>
+                                <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = product"></i></td>
+                                <td><i class="fa fa-trash-o pointer" (click)="deleteByid(product.id)"></i></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td><button class="btn btn-success btn-rounded" (click)="show=true">New Product</button></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
