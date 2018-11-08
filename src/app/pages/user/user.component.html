@@ -1,0 +1,105 @@
+<!-- save product -->
+<div class="row" *ngIf="show">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-title text-center">
+                Create User
+                <i class="fa fa-times-circle pointer" (click)="show = false"></i>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">Email</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Password</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="email" name="name" [(ngModel)]="model.name" class="form-control" placeholder="Email" required></td>
+                            <td>
+                                <select class="form-control" name="roleId" [(ngModel)]="model.roleId">
+                                    <option *ngFor="let role of roles" [ngValue] ="role.id">{{role.name}}</option>
+                                </select>
+                            </td>
+                            <td><input type="password" name="password" [(ngModel)]="model.password" class="form-control" placeholder="password" required></td>
+                            <td><button type="button" class="btn btn-success btn-rounded btn-block" (click)="save(model)">Save</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- cierre save -->
+<!-- update product -->
+<div class="row" *ngIf="showup">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-title text-center">
+                Update User
+                <i class="fa fa-times-circle pointer" (click)="showup = false"></i>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">Email</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Password</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="email" name="name" [(ngModel)]="modelUp.name" class="form-control" placeholder="Email"></td>
+                            <td>
+                                <select class="form-control" name="roleId" [(ngModel)]="modelUp.roleId">
+                                    <option *ngFor="let role of roles" [ngValue] ="role.id">{{role.name}}</option>
+                                </select>
+                            </td>
+                            <td><input type="password" name="password" [(ngModel)]="modelUp.password" class="form-control" placeholder="password" disabled required></td>
+                            <td><button type="button" class="btn btn-primary btn-rounded" (click)="update(modelUp)">Update</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- cierre update -->
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-wrapper-scroll-y">
+                <div class="table-responsive">
+                    <table class="table" id="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Update</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of users">
+                                <td>{{user.name}}</td>
+                                <td>{{user.roleId.name}}</td>
+                                <td>{{user.password}}</td>
+                                <td><i class="fa fa-edit pointer" (click)="showCard(); modelUp = user"></i></td>
+                                <td><i class="fa fa-trash-o pointer" (click)="deleteById(user.id)"></i></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td><button class="btn btn-success btn-rounded" (click)="show=true">New Product</button></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

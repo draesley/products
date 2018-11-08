@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Create</label>
+                    <label for="name">Name</label>
                     <input type="text" name="name" [(ngModel)]="model.name" class="form-control" aria-describedby="name" placeholder="Name">
                 </div>
                 <button type="button" class="btn btn-success btn-rounded btn-block" (click)="save(model)">Save</button>
@@ -12,9 +12,9 @@
         <div class="card" *ngIf="show">
             <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Update
-                            <i class="fa fa-times-circle pointer" (click)="show = false"></i>
-                    </label>
+                    <label for="name">Name
+                        <i class="fa fa-times-circle pointer" (click)="show = false"></i>
+                </label>
                     <input type="text" name="name" [(ngModel)]="modelUp.name" class="form-control" aria-describedby="name" placeholder="Name">
                 </div>
                 <button type="button" class="btn btn-primary btn-rounded btn-block" (click)=update(modelUp)>Update</button>
@@ -31,16 +31,16 @@
                                 <tr>
                                     <th scope="col">id</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Category</th>
+                                    <th scope="col">Update</th>
                                     <th scope="col">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let category of categories">
-                                    <th scope="row">{{category.id}}</th>
-                                    <td>{{category.name}}</td>
-                                    <td><i class="fa fa-edit pointer" (click)="showCard(); modelUp = category"></i></td>
-                                    <td><i class="fa fa-trash-o pointer" (click)="deleteById(category.id)"></i></td>
+                                <tr *ngFor="let typeLocation of typeLocationes">
+                                    <th scope="row">{{typeLocation.id}}</th>
+                                    <td>{{typeLocation.name}}</td>
+                                    <td><i class="fa fa-edit pointer" (click)="showCard(); modelUp = typeLocation"></i></td>
+                                    <td><i class="fa fa-trash-o pointer" (click)="deleteById(typeLocation.id)"></i></td>
                                 </tr>
                             </tbody>
                         </table>

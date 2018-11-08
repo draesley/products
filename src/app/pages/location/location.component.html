@@ -1,0 +1,139 @@
+<!-- save location -->
+<div class="row" *ngIf="show">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-title text-center">
+                Create Location
+                <i class="fa fa-times-circle pointer" (click)="show = false"></i>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">Code</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Type Location</th>
+                            <th scope="col">Commune</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="number" name="code" [(ngModel)]="model.code" class="form-control" placeholder="Code" required></td>
+                            <td><input type="text" name="name" [(ngModel)]="model.name" class="form-control" placeholder="Name" required></td>
+
+                            <td>
+                                <select class="form-control" name="roleId" [(ngModel)]="model.cityId">
+                                <option *ngFor="let city of cities" [ngValue] ="city.id">{{city.name}}</option>
+                              </select>
+                            </td>
+                            <td>
+                                <select class="form-control" name="roleId" [(ngModel)]="model.typelocationId">
+                                  <option *ngFor="let type of typeLocations" [ngValue] ="type.id">{{type.name}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control" name="roleId" [(ngModel)]="model.communeId">
+                                  <option *ngFor="let commune of commnunes" [ngValue] ="commune.id">{{commune.name}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><button type="button" class="btn btn-success btn-rounded btn-block" (click)="save(model)">Save</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- cierre save -->
+<!-- abre update -->
+<div class="row" *ngIf="showup">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-title text-center">
+                Update Location
+                <i class="fa fa-times-circle pointer" (click)="showup = false"></i>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">Code</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Type Location</th>
+                            <th scope="col">Commune</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="number" name="code" [(ngModel)]="modelUp.code" class="form-control" placeholder="Code" required></td>
+                            <td><input type="text" name="name" [(ngModel)]="modelUp.name" class="form-control" placeholder="Name" required></td>
+
+                            <td>
+                                <select class="form-control" name="roleId" [(ngModel)]="modelUp.cityId">
+                                <option *ngFor="let city of cities" [ngValue] ="city.id">{{city.name}}</option>
+                              </select>
+                            </td>
+                            <td>
+                                <select class="form-control" name="roleId" [(ngModel)]="modelUp.typelocationId">
+                                  <option *ngFor="let type of typeLocations" [ngValue] ="type.id">{{type.name}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control" name="roleId" [(ngModel)]="modelUp.communeId">
+                                  <option *ngFor="let commune of commnunes" [ngValue] ="commune.id">{{commune.name}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><button type="button" class="btn btn-primary btn-rounded btn-block" (click)="update(modelUp)">Update</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- cierre update -->
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-wrapper-scroll-y">
+                <div class="table-responsive">
+                    <table class="table" id="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Code</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">City</th>
+                                <th scope="col">Type Location</th>
+                                <th scope="col">Commune</th>
+                                <th scope="col">Update</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let location of locations">
+                                <td>{{location.code}}</td>
+                                <td>{{location.name}}</td>
+                                <td>{{location.cityId.name}}</td>
+                                <td>{{location.typelocationId.name}}</td>
+                                <td>{{location.communeId.name}}</td>
+                                <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = location"></i></td>
+                                <td><i class="fa fa-trash-o pointer" (click)="deleteById(location.id)"></i></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td><button class="btn btn-success btn-rounded" (click)="show=true">New Location</button></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

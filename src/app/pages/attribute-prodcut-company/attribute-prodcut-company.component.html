@@ -1,0 +1,111 @@
+<!-- save attribut product company-->
+<div class="row" *ngIf="show">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-title text-center">
+                Create Product Company
+                <i class="fa fa-times-circle pointer" (click)="show = false"></i>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">Price</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Company</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="number" name="" [(ngModel)]="model.price" class="form-control" placeholder="Price" required></td>
+                            <td>
+                                <select class="form-control" name="attributeproductsId" [(ngModel)]="model.attributeproductsId">
+                            <option *ngFor="let ap of attributeP" [ngValue] ="ap.id">{{ap.productsId.name}}</option>
+                          </select>
+                            </td>
+                            <td>
+                                <select class="form-control" name="roleId" [(ngModel)]="model.companyId">
+                            <option *ngFor="let company of companies" [ngValue] ="company.id">{{company.name}}</option>
+                          </select>
+                            </td>
+                            <td><button type="button" class="btn btn-success btn-rounded btn-block" (click)="save(model)">Save</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- cierre save -->
+<!-- open update -->
+<div class="row" *ngIf="showup">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-title text-center">
+                Update Product Company
+                <i class="fa fa-times-circle pointer" (click)="showup = false"></i>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">Price</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Company</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="number" name="" [(ngModel)]="modelUp.price" class="form-control" placeholder="Price" required></td>
+                            <td>
+                                <select class="form-control" name="attributeproductsId" [(ngModel)]="modelUp.attributeproductsId">
+                          <option *ngFor="let ap of attributeP" [ngValue] ="ap.id">{{ap.productsId.name}}</option>
+                        </select>
+                            </td>
+                            <td>
+                                <select class="form-control" name="roleId" [(ngModel)]="modelUp.companyId">
+                          <option *ngFor="let company of companies" [ngValue] ="company.id">{{company.name}}</option>
+                        </select>
+                            </td>
+                            <td><button type="button" class="btn btn-primary btn-rounded btn-block" (click)="update(modelUp)">Update</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- close update -->
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-wrapper-scroll-y">
+                <div class="table-responsive">
+                    <table class="table" id="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Company</th>
+                                <th scope="col">Update</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let apc of attributePC">
+                                <td>{{apc.id}}</td>
+                                <td>{{apc.price}}</td>
+                                <td>{{apc.attributeproductsId.productsId.name}}</td>
+                                <td>{{apc.companyId.name}}</td>
+                                <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = apc"></i></td>
+                                <td><i class="fa fa-trash-o pointer" (click)="deleteById(apc.id)"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <td><button class="btn btn-success btn-rounded" (click)="show=true">New Product Company</button></td>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

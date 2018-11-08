@@ -1,0 +1,111 @@
+<!-- save location -->
+<div class="row" *ngIf="show">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-title text-center">
+                Create Attribute-Product
+                <i class="fa fa-times-circle pointer" (click)="show = false"></i>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">Description</th>
+                            <th scope="col">Attribute</th>
+                            <th scope="col">Product</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="description" [(ngModel)]="model.description" class="form-control" placeholder="Description" required></td>
+                            <td>
+                                <select class="form-control" name="attributeId" [(ngModel)]="model.attributeId">
+                              <option *ngFor="let attribute of attributes" [ngValue] ="attribute.id">{{attribute.name}}</option>
+                            </select>
+                            </td>
+                            <td>
+                                <select class="form-control" name="roleId" [(ngModel)]="model.productsId">
+                              <option *ngFor="let product of products" [ngValue] ="product.id">{{product.name}}</option>
+                            </select>
+                            </td>
+                            <td><button type="button" class="btn btn-success btn-rounded btn-block" (click)="save(model)">Save</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- cierre save -->
+<!-- open update -->
+<div class="row" *ngIf="showup">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-title text-center">
+                Update Attribute-Product
+                <i class="fa fa-times-circle pointer" (click)="showup = false"></i>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">Description</th>
+                            <th scope="col">Attribute</th>
+                            <th scope="col">Product</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="description" [(ngModel)]="modelUp.description" class="form-control" placeholder="Description" required></td>
+                            <td>
+                                <select class="form-control" name="attributeId" [(ngModel)]="modelUp.attributeId">
+                            <option *ngFor="let attribute of attributes" [ngValue] ="attribute.id">{{attribute.name}}</option>
+                          </select>
+                            </td>
+                            <td>
+                                <select class="form-control" name="roleId" [(ngModel)]="modelUp.productsId">
+                            <option *ngFor="let product of products" [ngValue] ="product.id">{{product.name}}</option>
+                          </select>
+                            </td>
+                            <td><button type="button" class="btn btn-primary btn-rounded btn-block" (click)="update(modelUp)">Update</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- close update -->
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-wrapper-scroll-y">
+                <div class="table-responsive">
+                    <table class="table" id="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Attribute</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Update</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let attributeproduct of attributeProducts">
+                                <td>{{attributeproduct.id}}</td>
+                                <td>{{attributeproduct.description}}</td>
+                                <td>{{attributeproduct.attributeId.name}}</td>
+                                <td>{{attributeproduct.productsId.name}}</td>
+                                <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = attributeproduct"></i></td>
+                                <td><i class="fa fa-trash-o pointer" (click)="deleteById(attributeproduct.id)"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <td><button class="btn btn-success btn-rounded" (click)="show=true">New Attribte Product</button></td>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

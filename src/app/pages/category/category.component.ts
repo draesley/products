@@ -16,6 +16,7 @@ export class CategoryComponent implements OnInit {
   Subscription:Subscription;
   model:Category;
   show:boolean = false;
+  modelUp:Category;
 
   constructor(private categoryService:CategoryService) { }
 
@@ -33,6 +34,14 @@ export class CategoryComponent implements OnInit {
 
   init(){
     this.model = {
+      id:null,
+      name:"",
+      categoryId:null
+    }
+  }
+
+  init2(){
+    this.modelUp = {
       id:null,
       name:"",
       categoryId:null
@@ -80,7 +89,7 @@ export class CategoryComponent implements OnInit {
     }else{
 
       this.categoryService.updateCategory(category);
-      this.init();
+      this.init2();
       this.render();
       this.show = false;
     }

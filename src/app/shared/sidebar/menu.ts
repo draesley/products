@@ -38,6 +38,66 @@ export const Menu = [
                 title:'Product',
                 icon:'',
                 url:'/product'
+            },
+            {
+                title:'Department',
+                icon:'',
+                url:'/department'
+            },
+            {
+                title:'City',
+                icon:'',
+                url:'/city'
+            },
+            {
+                title:'Commune',
+                icon:'',
+                url:'/commune'
+                
+            },
+            {
+                title:'Type-location',
+                icon:'',
+                url:'/type-location'
+                
+            },
+            {
+                title:'Role',
+                icon:'',
+                url:'/role'
+                
+            },
+            {
+                title:'User',
+                icon:'',
+                url:'/user'
+                
+            },
+            {
+                title:'Location',
+                icon:'',
+                url:'/location'
+                
+            },
+            {
+                title:'Contact',
+                icon:'',
+                url:'/contact'
+            },
+            {
+                title:'Company',
+                icon:'',
+                url:'/company'
+            },
+            {
+                title:'Attribute-Product',
+                icon:'',
+                url:'/attributeproduct'
+            },
+            {
+                title:'Product-Company',
+                icon:'',
+                url:'/attribute-prodcut-company'
             }
         ]
     }

@@ -12,7 +12,9 @@
         <div class="card" *ngIf="showcar">
             <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Update</label>
+                    <label for="name">Update
+                        <i class="fa fa-times-circle pointer" (click)="showcar = false"></i>
+                    </label>
                     <input type="text" name="nameUpdate" [(ngModel)]="nameUpdate" class="form-control" aria-describedby="name" placeholder="Name">
                 </div>
                 <button type="button" class="btn btn-primary btn-rounded btn-block" (click)=update()>Update</button>
