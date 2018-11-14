@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Department } from '../../config/model/department';
 import { Subscription } from 'rxjs';
-import { DepartmentService } from '../../services/department.service';
+import { DepartmentService } from '../../pages/services/department.service';
 
 @Component({
   selector: 'app-department',

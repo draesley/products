@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 import { HttpClient } from '@angular/common/http';
-import { API_ROUTE } from '../config/apirute';
-import { AttributeProduct } from '../config/model/attributeproduct';
+import { API_ROUTE } from '../../config/apirute';
+import { AttributeProduct } from '../../config/model/attributeproduct';
 
 
 @Injectable({

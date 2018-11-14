@@ -3,9 +3,9 @@ import { Subscription } from 'rxjs';
 import { AttributeProductCompany } from '../../config/model/attribute.product.ompany';
 import { AttributeProduct } from '../../config/model/attributeproduct';
 import { Company } from '../../config/model/company';
-import { AttributeproductCompanyService } from '../../services/attributeproduct-company.service';
-import { AttributeproductService } from '../../services/attributeproduct.service';
-import { CompanyService } from '../../services/company.service';
+import { AttributeproductCompanyService } from '../../pages/services/attributeproduct-company.service';
+import { AttributeproductService } from '../../pages/services/attributeproduct.service';
+import { CompanyService } from '../../pages/services/company.service';
 
 @Component({
   selector: 'app-attribute-prodcut-company',

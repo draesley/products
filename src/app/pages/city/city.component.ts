@@ -1,9 +1,9 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { City } from '../../config/model/city';
 import { Subscription } from 'rxjs';
-import { CityService } from '../../services/city.service';
+import { CityService } from '../../pages/services/city.service';
 import { Department } from '../../config/model/department';
-import { DepartmentService } from '../../services/department.service';
+import { DepartmentService } from '../../pages/services/department.service';
 
 @Component({
   selector: 'app-city',

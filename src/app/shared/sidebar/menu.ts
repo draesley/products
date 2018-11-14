@@ -1,12 +1,12 @@
 export const Menu = [
     {
-        title:'Main',
+        title:'Main User',
         icon:'fa fa-folder-open-o',
         submenu:[
             {
-                title:'Dashboard',
+                title:'Product',
                 icon:'',
-                url:'/dashboard'
+                url:'/pages/product'
             }
         ]
     },
@@ -16,88 +16,88 @@ export const Menu = [
         submenu:[
             {
                 title:'Attribute',
-                icon:'objects_key-25',
-                url:'/attribute'
+                icon:'fa fa-gear',
+                url:'/pages/attribute'
             },
             {
                 title:'Category',
                 icon:'',
-                url:'/category'
+                url:'/pages/category'
             },
             {
                 title:'Line',
                 icon:'',
-                url:'/line'
+                url:'/pages/line'
             },
             {
                 title:'SubLine',
                 icon:'',
-                url:'/subline'
+                url:'/pages/subline'
             },
             {
                 title:'Product',
                 icon:'',
-                url:'/product'
+                url:'/pages/product'
             },
             {
                 title:'Department',
                 icon:'',
-                url:'/department'
+                url:'/pages/department'
             },
             {
                 title:'City',
                 icon:'',
-                url:'/city'
+                url:'/pages/city'
             },
             {
                 title:'Commune',
                 icon:'',
-                url:'/commune'
+                url:'/pages/commune'
                 
             },
             {
                 title:'Type-location',
                 icon:'',
-                url:'/type-location'
+                url:'/pages/type-location'
                 
             },
             {
                 title:'Role',
                 icon:'',
-                url:'/role'
+                url:'/pages/role'
                 
             },
             {
                 title:'User',
                 icon:'',
-                url:'/user'
+                url:'/pages/user'
                 
             },
             {
                 title:'Location',
                 icon:'',
-                url:'/location'
+                url:'/pages/location'
                 
             },
             {
                 title:'Contact',
                 icon:'',
-                url:'/contact'
+                url:'/pages/contact'
             },
             {
                 title:'Company',
                 icon:'',
-                url:'/company'
+                url:'/pages/company'
             },
             {
                 title:'Attribute-Product',
                 icon:'',
-                url:'/attributeproduct'
+                url:'/pages/attributeproduct'
             },
             {
                 title:'Product-Company',
                 icon:'',
-                url:'/attribute-prodcut-company'
+                url:'/pages/attribute-prodcut-company'
             }
         ]
     }

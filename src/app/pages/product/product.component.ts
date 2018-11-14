@@ -1,8 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { ProductService } from '../../services/product.service';
+import { ProductService } from '../../pages/services/product.service';
 import { Product } from '../../config/model/product';
 import { Subscription } from 'rxjs';
-import { CategoryService } from '../../services/category.service';
+import { CategoryService } from '../../pages/services/category.service';
 import { Category } from '../../config/model/category';
 
 @Component({

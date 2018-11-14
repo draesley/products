@@ -3,9 +3,9 @@ import { Subscription } from 'rxjs';
 import { AttributeProduct } from '../../config/model/attributeproduct';
 import { Attribute } from '../../config/model/attribute';
 import { Product } from '../../config/model/product';
-import { AttributeproductService } from '../../services/attributeproduct.service';
-import { AttributeService } from '../../services/attribute.service';
-import { ProductService } from '../../services/product.service';
+import { AttributeproductService } from '../../pages/services/attributeproduct.service';
+import { AttributeService } from '../../pages/services/attribute.service';
+import { ProductService } from '../../pages/services/product.service';
 
 @Component({
   selector: 'app-attributeproduct',

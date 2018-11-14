@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Commune } from '../../config/model/commune';
 import { Subscription } from 'rxjs';
-import { CommuneService } from '../../services/commune.service';
+import { CommuneService } from '../../pages/services/commune.service';
 
 @Component({
   selector: 'app-commune',

@@ -1,9 +1,9 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Company } from '../../config/model/company';
-import { CompanyService } from '../../services/company.service';
-import { LocationService } from '../../services/location.service';
-import { ContactService } from '../../services/contact.service';
+import { CompanyService } from '../../pages/services/company.service';
+import { LocationService } from '../../pages/services/location.service';
+import { ContactService } from '../../pages/services/contact.service';
 import { Location } from '../../config/model/location';
 import { Contact } from '../../config/model/contact';
 

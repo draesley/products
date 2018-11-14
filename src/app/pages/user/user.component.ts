@@ -1,8 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { User } from '../../config/model/user';
-import { UserService } from '../../services/user.service';
-import { RoleService } from '../../services/role.service';
+import { UserService } from '../../pages/services/user.service';
+import { RoleService } from '../../pages/services/role.service';
 import { Role } from '../../config/model/role';
 import {Md5} from "md5-typescript";
 

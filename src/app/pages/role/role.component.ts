@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { RoleService } from '../../services/role.service';
+import { RoleService } from '../../pages/services/role.service';
 import { Subscription } from 'rxjs';
 import { Role } from '../../config/model/role';
 

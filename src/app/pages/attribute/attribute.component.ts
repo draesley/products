@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Attribute } from '../../config/model/attribute';
-import { AttributeService } from '../../services/attribute.service';
+import { AttributeService } from '../../pages/services/attribute.service';
 import { Subscription } from 'rxjs';
 
 

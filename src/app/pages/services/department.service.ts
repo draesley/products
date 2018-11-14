@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
-import { API_ROUTE } from '../config/apirute';
-import { Department } from '../config/model/department';
+import { API_ROUTE } from '../../config/apirute';
+import { Department } from '../../config/model/department';
 
 @Injectable({
   providedIn: 'root'

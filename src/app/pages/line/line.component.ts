@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { CategoryService } from '../../services/category.service';
+import { CategoryService } from '../../pages/services/category.service';
 import { Subscription } from 'rxjs';
 import { Category } from '../../config/model/category';
 

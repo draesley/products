@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { API_ROUTE } from '../config/apirute';
+import { API_ROUTE } from '../../config/apirute';
 import swal from 'sweetalert';
-import { Attribute } from '../config/model/attribute';
+import { Attribute } from '../../config/model/attribute';
 import { Subject } from 'rxjs';
-import { httpOptions } from '../config/headers';
+import { httpOptions } from '../../config/headers';
 
 
 @Injectable({
@@ -21,10 +21,6 @@ export class AttributeService {
   getlist(){
     let url = API_ROUTE + "/attribute/findAll";
     return this.http.get(url);
-  }
-
-  init(){
-    
   }
 
   save(attribute:Attribute){
@@ -46,6 +42,5 @@ export class AttributeService {
     let url =`${API_ROUTE + '/attribute/deleteById/' + id}`;
     this.subject.next();
     return this.http.delete(url,httpOptions);
-    //swal('Delete ok','success');
   }
 }

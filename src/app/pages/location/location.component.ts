@@ -1,10 +1,10 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { LocationService } from '../../services/location.service';
+import { LocationService } from '../../pages/services/location.service';
 import { Location } from '../../config/model/location';
-import { CityService } from '../../services/city.service';
-import { TypeLocationService } from '../../services/type-location.service';
-import { CommuneService } from '../../services/commune.service';
+import { CityService } from '../../pages/services/city.service';
+import { TypeLocationService } from '../../pages/services/type-location.service';
+import { CommuneService } from '../../pages/services/commune.service';
 import { City } from '../../config/model/city';
 import { TypeLocation } from '../../config/model/type.location';
 import { Commune } from '../../config/model/commune';

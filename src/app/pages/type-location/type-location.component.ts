@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { TypeLocationService } from '../../services/type-location.service';
+import { TypeLocationService } from '../../pages/services/type-location.service';
 import { TypeLocation } from '../../config/model/type.location';
 import { Subscription } from 'rxjs';
 

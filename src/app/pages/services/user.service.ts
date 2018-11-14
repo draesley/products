@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { API_ROUTE } from '../config/apirute';
-import { User } from '../config/model/user';
+import { API_ROUTE } from '../../config/apirute';
+import { User } from '../../config/model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +42,14 @@ export class UserService {
         swal('User Removed','','success');
         this.subject.next();
     });
+  }
+
+  findByemail(email:string){
+    let url = API_ROUTE + 'user/findByEmail/' + email;
+    return this.http.get(url);
+  }
+
+  login(){
+    
   }
 }

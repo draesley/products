@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu } from './menu';
 import { Router } from '@angular/router';
+import { SidebarService } from '../../services/sidebar.service';
+import { MenuService } from '../../services/menu.service';
 
 
 @Component({
@@ -11,11 +13,13 @@ import { Router } from '@angular/router';
 export class SidebarComponent implements OnInit {
 
   menus:any;
+  role = "administrador";
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+              private menuService:MenuService) { }
 
   ngOnInit() {
-    this.menus = Menu;
+   this.menus = Menu;
+    //this.menus = this.menuService.menu(this.role);
   }
-
 }

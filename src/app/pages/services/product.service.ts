@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
-import { API_ROUTE } from '../config/apirute';
-import { Product } from '../config/model/product';
+import { API_ROUTE } from '../../config/apirute';
+import { Product } from '../../config/model/product';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,11 @@ export class ProductService {
 
   listProduct(){
     let url = API_ROUTE + 'product/findAll';
+    return this.http.get(url);
+  }
+
+  searchProduct(index:string){
+    let url = API_ROUTE + 'product/search/' + index;
     return this.http.get(url);
   }
 

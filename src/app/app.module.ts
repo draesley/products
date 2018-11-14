@@ -10,8 +10,11 @@ import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AttributeService } from './services/attribute.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PagesComponent } from './pages/pages.component';
+import { FormsModule } from '@angular/forms';
+import { MenuService } from './services/menu.service';
 
 @NgModule({
   declarations: [
@@ -19,16 +22,20 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     NopagefoundComponent,
     RegisterComponent,
+    DashboardComponent,
+    //PagesComponent
   ],
   imports: [
     BrowserModule,
     PagesModule,
     APP_ROUTES,
+    FormsModule,
     CommonModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
-  providers: [AttributeService],
+  providers: [MenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
