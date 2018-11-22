@@ -19,6 +19,7 @@ export class AttributeComponent implements OnInit {
   emmiter = new EventEmitter<boolean>();
   subscription:Subscription;
   showcar:boolean = false;
+  showcarnew:boolean = false;
 
   constructor(private attributeService:AttributeService) { }
 

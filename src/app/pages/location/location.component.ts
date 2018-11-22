@@ -93,7 +93,7 @@ export class LocationComponent implements OnInit {
   }
 
   save(location:Location){
-    if(location.code == null || location.name == "" || location.cityId == null || location.communeId == null || location.typelocationId == null){
+    if(location.code == null || location.name == "" || location.cityId == null || location.typelocationId == null || location.communeId == null){
         swal('Location Required','Name, Code, City, Type Location and Commune','warning');
         return;
     };

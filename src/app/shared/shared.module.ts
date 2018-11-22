@@ -4,6 +4,7 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
 import { BreadcrumdsComponent } from "./breadcrumds/breadcrumds.component";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from '@angular/common';
+import { SidebarService } from "../services/sidebar.service";
 
 @NgModule({
     declarations:[
@@ -19,6 +20,9 @@ import { CommonModule } from '@angular/common';
     imports:[
         RouterModule,
         CommonModule
+    ],
+    providers:[
+        SidebarService
     ]
 })
 export class SharedModule{}

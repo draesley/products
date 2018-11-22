@@ -15,6 +15,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagesComponent } from './pages/pages.component';
 import { FormsModule } from '@angular/forms';
 import { MenuService } from './services/menu.service';
+import { FlipModule } from 'ngx-flip';
+import { DashboardGuard } from './services/dashboard.guard';
 
 @NgModule({
   declarations: [
@@ -33,9 +35,13 @@ import { MenuService } from './services/menu.service';
     CommonModule,
     RouterModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    FlipModule
   ],
-  providers: [MenuService],
+  providers: [
+    DashboardGuard,
+    MenuService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

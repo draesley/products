@@ -5,6 +5,9 @@ import { UserService } from '../../pages/services/user.service';
 import { RoleService } from '../../pages/services/role.service';
 import { Role } from '../../config/model/role';
 import {Md5} from "md5-typescript";
+import { ContactService } from '../services/contact.service';
+import { Contact } from '../../config/model/contact';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-user',
@@ -23,10 +26,12 @@ export class UserComponent implements OnInit {
   showup:boolean = false;
   roles:Role[] = [];
   password2:string;
+  contact:Contact;
 
 
   constructor(private userService:UserService,
-              private roleService:RoleService) { }
+              private roleService:RoleService,
+              private contactService:ContactService) { }
 
   ngOnInit() {
     this.init();
@@ -110,11 +115,11 @@ export class UserComponent implements OnInit {
   }
 
   deleteById(id:number){
+
     if(id == null){
       swal('contact technical service','User Id is required','warning');
       return;
     }
-
     swal({
       title:'¿you are sure to delete this User?',
       text:'',

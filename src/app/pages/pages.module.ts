@@ -22,6 +22,13 @@ import { CompanyComponent } from './company/company.component';
 import { AttributeproductComponent } from './attributeproduct/attributeproduct.component';
 import { AttributeProdcutCompanyComponent } from './attribute-prodcut-company/attribute-prodcut-company.component';
 import { PagesComponent } from "./pages.component";
+import { ContactService } from './services/contact.service';
+import { JwtModule } from '@auth0/angular-jwt';
+import { MenuService } from "../services/menu.service";
+
+/* export function tokenGetter() {
+    return localStorage.getItem('access_token');
+  } */
 
 @NgModule({
     declarations:[
@@ -57,9 +64,18 @@ import { PagesComponent } from "./pages.component";
         SharedModule,
         PAGES_ROUTES,
         CommonModule,
-        FormsModule    
+        FormsModule,
+        /* JwtModule.forRoot({
+            config: {
+              tokenGetter: tokenGetter,
+              whitelistedDomains: ['localhost:4200'],
+              blacklistedRoutes: ['localhost:8080']
+            }
+          }) */
     ],
     providers:[
+        ContactService,
+        MenuService
     ]
 })
 export class PagesModule{}

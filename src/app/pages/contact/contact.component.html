@@ -114,8 +114,6 @@
                                 <th scope="col">Adress</th>
                                 <th scope="col">Phon</th>
                                 <th scope="col">Movil</th>
-                                <th scope="col">User</th>
-                                <th scope="col">Location</th>
                                 <th scope="col">Update</th>
                                 <th scope="col">Delete</th>
                             </tr>
@@ -128,8 +126,6 @@
                                 <td>{{contact.adress}}</td>
                                 <td>{{contact.phon}}</td>
                                 <td>{{contact.movil}}</td>
-                                <td>{{contact.userId.name}}</td>
-                                <td>{{contact.locationId.name}}</td>
                                 <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = contact"></i></td>
                                 <td><i class="fa fa-trash-o pointer" (click)="deleteById(contact.id)"></i></td>
                             </tr>

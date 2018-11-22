@@ -18,11 +18,15 @@ import { CompanyComponent } from "./company/company.component";
 import { AttributeproductComponent } from './attributeproduct/attributeproduct.component';
 import { AttributeProdcutCompanyComponent } from "./attribute-prodcut-company/attribute-prodcut-company.component";
 import { PagesComponent } from './pages.component';
+import { DashboardGuard } from '../services/dashboard.guard';
 
 const pagesRoutes: Routes = [
             {
                 path:'pages',
                 component:PagesComponent,
+                canActivate:[
+                    DashboardGuard
+                ],
                 children:[
                     {
                         path:'category',

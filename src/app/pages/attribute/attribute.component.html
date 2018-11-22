@@ -1,9 +1,11 @@
 <div class="row">
     <div class="col-4">
-        <div class="card">
+        <div class="card" *ngIf="showcarnew">
             <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Create</label>
+                    <label for="exampleInputEmail1">Create
+                        <i class="fa fa-times-circle pointer" (click)="showcarnew = false"></i>
+                    </label>
                     <input type="text" name="name" [(ngModel)]="name" class="form-control" aria-describedby="name" placeholder="Name">
                 </div>
                 <button type="button" class="btn btn-success btn-rounded btn-block" (click)="save()">Save</button>
@@ -44,6 +46,7 @@
                         </tbody>
                     </table>
                 </div>
+                <button type="button" class="btn btn-success btn-rounded btn-block" (click)="showcarnew = true">New</button>
             </div>
         </div>
     </div>

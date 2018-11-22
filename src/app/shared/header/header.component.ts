@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../pages/services/user.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styles: []
+  styleUrls:['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public userService:UserService) { }
 
   ngOnInit() {
   }
-
-  searchProduct(index:string){
-      console.log(index);
-  }
-
 }

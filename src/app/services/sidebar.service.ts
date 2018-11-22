@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Menu } from '../shared/sidebar/menu';
+//import { Menu } from '../shared/sidebar/menu';
 
 @Injectable({
   providedIn: 'root'

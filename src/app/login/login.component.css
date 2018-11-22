@@ -34,7 +34,7 @@
 }
 
 .login-sidebar .login-box {
-    right: 0px;
+    left: 0px;
     position: absolute;
     height: 100%;
 }

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../config/model/product';
 import { ProductService } from '../pages/services/product.service';
+import { Menu } from '../config/model/menu';
+import { MenuService } from '../services/menu.service';
+
+declare function initPlugin();
 
 @Component({
   selector: 'app-dashboard',
@@ -10,11 +14,23 @@ import { ProductService } from '../pages/services/product.service';
 export class DashboardComponent implements OnInit {
 
   products:Product[] = [];
+  flipDiv:boolean = false;
+  menu:Menu[] = [];
 
-  constructor(private productService:ProductService) { }
+  constructor(private productService:ProductService,
+              public menuService:MenuService) { }
 
   ngOnInit() {
+    initPlugin();
     this.listProducts();
+  }
+
+  changeFlip(){
+    if(this.flipDiv == false){
+      this.flipDiv = true;
+    }else{
+      this.flipDiv = false;
+    }
   }
 
   listProducts(){
