@@ -26,19 +26,20 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <div class="main-content">
+    <div class="main-content l">
         <div class="row card-group">
-            <div class="col-lg-3 col-md-6" *ngFor="let product of products">
+            <div class="col-lg-2 col-md-6" *ngFor="let product of products">
                 <div class="card">
                     <div class="card-title text-center cardF font-bold">{{product.name}}</div>
                     <div class="el-card-item">
-                        <div class="el-card-avatar el-overlay-1"> <img src="../../../assets/images/no-img.jpg" alt="user" class="img-fluid sizeimg" /></div>
+                        <div class="el-card-avatar el-overlay-1"> <img src="../../../assets/images/no-img.jpg" alt="user" class="img-fluid" /></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- <ngx-flip [flip]="flipDiv">
     <div front>Front</div>

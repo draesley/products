@@ -8,6 +8,7 @@ import {Md5} from "md5-typescript";
 import { ContactService } from '../services/contact.service';
 import { Contact } from '../../config/model/contact';
 import { element } from 'protractor';
+import { UploadFileService } from '../services/upload-file.service';
 
 @Component({
   selector: 'app-user',
@@ -27,11 +28,15 @@ export class UserComponent implements OnInit {
   roles:Role[] = [];
   password2:string;
   contact:Contact;
+  userImg:User;
+  showimg:boolean = false;
+  imgUp:File;
 
 
   constructor(private userService:UserService,
               private roleService:RoleService,
-              private contactService:ContactService) { }
+              private contactService:ContactService,
+              private uploadFileService:UploadFileService) { }
 
   ngOnInit() {
     this.init();
@@ -89,11 +94,18 @@ export class UserComponent implements OnInit {
       return;
     };
 
-    user.password = Md5.init(user.password);
-    this.userService.save(user);
-    this.render();
-    this.show = false;
-    this.init();
+    this.userService.findByEmail(user.name).subscribe((res:any)=>{
+        if(res){
+          swal('Username already exist','','info');
+          return;
+        }else{
+          user.password = Md5.init(user.password);
+          this.userService.save(user);
+          this.render();
+          this.show = false;
+          this.init();
+        }
+    });
   }
 
   update(user:User){
@@ -133,6 +145,24 @@ export class UserComponent implements OnInit {
         this.render();
       }
     });
+  }
+
+  saveImage(){
+    this.userService.uploadImg(this.imgUp, this.userImg.id);
+  }
+
+  changeImg(file:File){
+
+      if(file.type.indexOf('image') < 0){
+          swal('selecting file is not an image','','info');
+          return;
+      }
+
+      if(!file){
+        return;
+      }
+
+      this.imgUp = file;
   }
 
 }

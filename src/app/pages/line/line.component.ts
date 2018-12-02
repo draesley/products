@@ -52,6 +52,17 @@ export class LineComponent implements OnInit {
   showCard(){
     this.show = true;
   }
+
+  searchCategory(id:number){
+    
+    
+    this.categories.forEach(element => {
+      if(element.id = id){  
+          this.categories.push(element);
+      }
+    });
+
+  }
   
   listCategory(){
     this.categoryService.listCategory().subscribe((res:any)=>{

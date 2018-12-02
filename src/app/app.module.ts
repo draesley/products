@@ -12,7 +12,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { PagesComponent } from './pages/pages.component';
 import { FormsModule } from '@angular/forms';
 import { MenuService } from './services/menu.service';
 import { FlipModule } from 'ngx-flip';
@@ -25,7 +24,6 @@ import { DashboardGuard } from './services/dashboard.guard';
     NopagefoundComponent,
     RegisterComponent,
     DashboardComponent,
-    //PagesComponent
   ],
   imports: [
     BrowserModule,

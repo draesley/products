@@ -68,37 +68,51 @@
     </div>
 </div>
 <!-- cierre update -->
-<div class="col-12">
-    <div class="card">
-        <div class="card-body">
-            <div class="table-wrapper-scroll-y">
-                <div class="table-responsive">
-                    <table class="table" id="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Role</th>
-                                <th scope="col">Password</th>
-                                <th scope="col">Update</th>
-                                <th scope="col">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let user of users">
-                                <td>{{user.name}}</td>
-                                <td>{{user.roleId.name}}</td>
-                                <td>{{user.password}}</td>
-                                <td><i class="fa fa-edit pointer" (click)="showCard(); modelUp = user"></i></td>
-                                <td><i class="fa fa-trash-o pointer" (click)="deleteById(user.id)"></i></td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td><button class="btn btn-success btn-rounded" (click)="show=true">New User</button></td>
-                            </tr>
-                        </tfoot>
-                    </table>
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-wrapper-scroll-y">
+                    <div class="table-responsive">
+                        <table class="table" id="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Update</th>
+                                    <th scope="col">Delete</th>
+                                    <th scope="col">Image</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of users">
+                                    <td>{{user.name}}</td>
+                                    <td>{{user.roleId.name}}</td>
+                                    <td><i class="fa fa-edit pointer" (click)="showCard(); modelUp = user"></i></td>
+                                    <td><i class="fa fa-trash-o pointer" (click)="deleteById(user.id)"></i></td>
+                                    <td><i class="fa fa-camera pointer" (click)="userImg = user; showimg = true"></i></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td><button class="btn btn-success btn-rounded" (click)="show = true">New User</button></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card" *ngIf="showimg">
+            <div class="card-body">
+                <img class="w150" src="../../../assets/images/no-img.jpg">
+                <input type="file" name="img" (change)="changeImg($event.target.files[0])"><br>
+                <button type="button" (click)="saveImage()" [disabled]="!imgUp" class="btn btn-block btn-primary">
+                    <i class="fa fa-save"></i>
+                    Update
+                </button>
             </div>
         </div>
     </div>

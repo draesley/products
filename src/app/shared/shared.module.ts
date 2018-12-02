@@ -5,6 +5,7 @@ import { BreadcrumdsComponent } from "./breadcrumds/breadcrumds.component";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from '@angular/common';
 import { SidebarService } from "../services/sidebar.service";
+import { PipesModule } from "../pipes/pipes.module";
 
 @NgModule({
     declarations:[
@@ -19,7 +20,8 @@ import { SidebarService } from "../services/sidebar.service";
     ],
     imports:[
         RouterModule,
-        CommonModule
+        CommonModule,
+        PipesModule
     ],
     providers:[
         SidebarService

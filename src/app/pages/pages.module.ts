@@ -25,6 +25,9 @@ import { PagesComponent } from "./pages.component";
 import { ContactService } from './services/contact.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MenuService } from "../services/menu.service";
+import { PipesModule } from "../pipes/pipes.module";
+import { UploadFileService } from "./services/upload-file.service";
+import { AngularSplitModule } from 'angular-split';
 
 /* export function tokenGetter() {
     return localStorage.getItem('access_token');
@@ -65,6 +68,8 @@ import { MenuService } from "../services/menu.service";
         PAGES_ROUTES,
         CommonModule,
         FormsModule,
+        PipesModule,
+        AngularSplitModule
         /* JwtModule.forRoot({
             config: {
               tokenGetter: tokenGetter,
@@ -75,7 +80,8 @@ import { MenuService } from "../services/menu.service";
     ],
     providers:[
         ContactService,
-        MenuService
+        MenuService,
+        UploadFileService
     ]
 })
 export class PagesModule{}

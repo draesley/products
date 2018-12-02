@@ -46,9 +46,24 @@ export class LoginComponent implements OnInit {
       let profile = googleUser.getBasicProfile();
       let token = googleUser.getAuthResponse().id_token;
       this.userService.loginGoogle(token).subscribe((res:any)=>{
-        console.log(res);
+        this.userService.findByEmail(profile.U3).subscribe((res:any)=>{
+          this.user = res;
+          if(this.user == null){
+            swal('Unregistered user','','error');
+            return;
+          }
+              this.userService.login(this.user);
+       });
+        
       });
     });
+  }
+
+  signOut() {
+      this.auth2 = gapi.auth2.getAuthInstance();
+      this.auth2.signOut().then(function() {
+        localStorage.clear();
+      });
   }
 
   login(data:NgForm){

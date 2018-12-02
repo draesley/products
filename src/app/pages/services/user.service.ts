@@ -5,6 +5,8 @@ import { API_ROUTE } from '../../config/apirute';
 import { User } from '../../config/model/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
+import { UploadFileService } from './upload-file.service';
+
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,7 +26,8 @@ export class UserService {
   userRole:string = "";
   
   constructor(private http:HttpClient,
-              private router:Router) { 
+              private router:Router,
+              private uploadFileService:UploadFileService) { 
                 this.loadStorage();
               }
 
@@ -88,7 +91,6 @@ export class UserService {
   }
 
   login(user:User){
-
     this.token = user.id;
     localStorage.setItem('user',JSON.stringify(user));
     this.userRole = user.roleId.name;
@@ -97,5 +99,19 @@ export class UserService {
 
   loginOk(){
     return (this.token > 0) ? true : false;
+  }
+
+  uploadImg(file:File, id:number){
+
+    
+    console.log(file);
+
+    /* this.uploadFileService.uploadFile(file)
+    .then(res =>{
+        console.log(res);
+    })
+    .catch(res =>{
+        console.log(res);
+    }); */
   }
 }
