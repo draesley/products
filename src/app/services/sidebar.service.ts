@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { UserService } from '../pages/services/user.service';
 //import { Menu } from '../shared/sidebar/menu';
 
 @Injectable({
@@ -6,7 +7,9 @@ import { Injectable } from '@angular/core';
 })
 export class SidebarService {
 
-
-  constructor() { }
+  menu:any[] = [];
+  constructor(public userService:UserService) {
+    this.menu = this.userService.menu;
+   }
 
 }

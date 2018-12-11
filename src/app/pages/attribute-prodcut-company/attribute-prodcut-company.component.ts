@@ -6,9 +6,11 @@ import { Company } from '../../config/model/company';
 import { AttributeproductCompanyService } from '../../pages/services/attributeproduct-company.service';
 import { AttributeproductService } from '../../pages/services/attributeproduct.service';
 import { CompanyService } from '../../pages/services/company.service';
+import { ProductService } from '../services/product.service';
+import { Product } from '../../config/model/product';
 
 @Component({
-  selector: 'app-attribute-prodcut-company',
+  selector: 'app-attribute-product-company',
   templateUrl: './attribute-prodcut-company.component.html',
   styles: []
 })
@@ -20,13 +22,13 @@ export class AttributeProdcutCompanyComponent implements OnInit {
   model:AttributeProductCompany;
   modelUp:AttributeProductCompany;
   attributePC:AttributeProductCompany[] = [];
-  attributeP:AttributeProduct[] = [];
+  products:Product[] = [];
   companies:Company[] = [];
   show:boolean = false;
   showup:boolean = false;
 
   constructor(private APCService:AttributeproductCompanyService,
-              private APService:AttributeproductService,
+              private productService:ProductService,
               private companyService:CompanyService) { }
 
   ngOnInit() {
@@ -37,19 +39,19 @@ export class AttributeProdcutCompanyComponent implements OnInit {
 
   init(){
     this.model = {
-      id:null,
+      _id:"",
       price:null,
-      companyId:null,
-      attributeproductsId:null
+      company:null,
+      product:null
     };
   }
 
   init2(){
     this.modelUp = {
-      id:null,
+      _id:"",
       price:null,
-      companyId:null,
-      attributeproductsId:null
+      company:null,
+      product:null
     };
   }
 
@@ -62,25 +64,30 @@ export class AttributeProdcutCompanyComponent implements OnInit {
 
   listAPC(){
     this.APCService.listAttributeProductCompany().subscribe((res:any)=>{
-        this.attributePC = res;
+      
+        this.attributePC = res.productCompany;
     });
   }
 
   chargeList(){
-    this.APService.listAttributeProduct().subscribe((res:any)=>{
-        this.attributeP = res;
+    this.productService.listProduct().subscribe((res:any)=>{
+        this.products = res.products;
     });
 
     this.companyService.listCompany().subscribe((res:any)=>{
-      this.companies = res;
+      this.companies = res.companies;
     });
   }
 
   save(APC:AttributeProductCompany){
-    if(APC.price == null || APC.companyId == null || APC.attributeproductsId == null){
+    
+    if(APC.price == null || APC.company == null || APC.product == null){
       swal('Product Company Required','Price, Company and Attributo-Product','warning');
       return;
     };
+
+    this.attributePC.forEach(element => {
+    });
 
     this.APCService.save(APC);
     this.init();
@@ -89,12 +96,12 @@ export class AttributeProdcutCompanyComponent implements OnInit {
   }
 
   update(APC:AttributeProductCompany){
-    if(APC.price == null || APC.companyId == null || APC.attributeproductsId == null){
+    if(APC.price == null || APC.company == null || APC.product == null){
       swal('Product Company Required','Price, Company and Attributo-Product','warning');
       return;
     };
 
-    if(APC.id == null){
+    if(APC._id == null){
       swal('contact technical service','Product Company Id is required','warning');
       return;
     };
@@ -105,7 +112,7 @@ export class AttributeProdcutCompanyComponent implements OnInit {
     this.render();
   }
 
-  deleteById(id:number){
+  deleteById(id:string){
     if(id == null){
       swal('contact technical service','Product Company id is required','warning');
       return;

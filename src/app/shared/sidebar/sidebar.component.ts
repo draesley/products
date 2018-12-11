@@ -3,6 +3,7 @@ import { SidebarService } from '../../services/sidebar.service';
 import { MenuService } from '../../services/menu.service';
 import { UserService } from '../../pages/services/user.service';
 import { Menu } from '../../config/model/menu';
+import { User } from '../../config/model/user';
 
 
 @Component({
@@ -13,42 +14,15 @@ import { Menu } from '../../config/model/menu';
 export class SidebarComponent implements OnInit {
 
   menus:Menu[] = [];
-  role = "";
-  row:number = 0;
+  user:User;
 
   constructor(public sidebarService:SidebarService,
-              public userService:UserService,
-              public menuService:MenuService) { 
+              public userService:UserService,) { 
                
               }
 
   ngOnInit() {
-    this.menu();
-    this.menus =JSON.parse(localStorage.getItem('menu'));
-    this.row = JSON.parse(localStorage.getItem('row'));
-    this.role = JSON.parse(localStorage.getItem('user.roleId.name'));
-  }
-
-  menu(){
-    if(this.userService.userRole === "user"){
-        this.menuService.listMenu(1).subscribe((res:any)=>{
-        localStorage.setItem('menu',JSON.stringify(res));
-        this.row = res.length;
-        localStorage.setItem('row', JSON.stringify(this.row));
-        return this.menus = res;
-        
-      });
-    };
-    
-    if(this.userService.userRole === "administrator"){
-        this.menuService.listMenu(2).subscribe((res:any)=>{
-        this.menus = res;
-        this.row = this.menus.length;
-        localStorage.setItem('row', JSON.stringify(this.row));
-        this.row = this.menus.length;
-        localStorage.setItem('menu',JSON.stringify(res));
-      });
-      return this.menus;
-   };
+    this.menus = this.sidebarService.menu;
+    this.user = this.userService.user;
   }
 }

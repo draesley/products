@@ -3,13 +3,16 @@
         <div class="card">
             <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Create</label>
+                    Category:
+                    <div class="i">
+                        {{categoryName}}
+                    </div>
                     <input type="text" name="name" [(ngModel)]="model.name" class="form-control" aria-describedby="name" placeholder="Name">
                 </div>
                 <div class="form-group">
-                    <label for="category">Category</label>
-                    <select class="form-control" name="categoryId" [(ngModel)]="model.categoryId">
-                        <option *ngFor="let category of lines" [ngValue] ="category.id">{{category.name}}</option>
+                    <label for="line">line</label>
+                    <select class="form-control" name="line" [(ngModel)]="model.line" (change)="searchLine(model.line)">
+                        <option *ngFor="let line of lines" [ngValue] ="line">{{line.name}}</option>
                     </select>
                 </div>
                 <button type="button" class="btn btn-success btn-rounded btn-block" (click)="save(model)">Save</button>
@@ -18,18 +21,19 @@
         <div class="card" *ngIf="show">
             <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Update
-                        <i class="fa fa-times-circle pointer" (click)="show = false"></i>
-                    </label>
+                    <i class="fa fa-times-circle pointer" (click)="show = false"></i> Category:
+                    <div class="i">
+                        {{categoryNameu}}
+                    </div>
                     <input type="text" name="name" [(ngModel)]="modelupdate.name" class="form-control" aria-describedby="name" placeholder="Name">
                 </div>
                 <div class="form-group">
-                    <label for="category">Category</label>
-                    <select class="form-control" name="category" [(ngModel)]="modelupdate.categoryId">
-                        <option *ngFor="let category of lines" [ngValue] ="category.id">{{category.name}}</option>
+                    <label for="line">line</label>
+                    <select class="form-control" name="line" [(ngModel)]="modelupdate.line" (change)="searchLine(modelupdate.line)">
+                        <option *ngFor="let line of lines" [ngValue] ="line">{{line.name}}</option>
                     </select>
                 </div>
-                <button type="button" class="btn btn-primary btn-rounded btn-block" (click)=update(modelupdate)>Update</button>
+                <button type="button" class="btn btn-primary btn-rounded btn-block" (click)="update(modelupdate)">Update</button>
             </div>
         </div>
     </div>
@@ -41,20 +45,18 @@
                         <table class="table" id="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">id</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Line</th>
+                                    <th scope="col">Sub-Line</th>
                                     <th scope="col">Update</th>
                                     <th scope="col">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let category of subLinesList">
-                                    <th scope="row">{{category.id}}</th>
-                                    <td>{{category.name}}</td>
-                                    <td>{{category.categoryId.name}}</td>
-                                    <td><i class="fa fa-edit pointer" (click)="modelupdate = category; showCard()"></i></td>
-                                    <td><i class="fa fa-trash-o pointer" (click)="deleteById(category.id)"></i></td>
+                                <tr *ngFor="let subline of subLines">
+                                    <td>{{subline.name}}</td>
+                                    <td>{{subline.line.name}}</td>
+                                    <td><i class="fa fa-edit pointer" (click)="modelupdate = subline; showCard(); categoryNameu = subline.line.name"></i></td>
+                                    <td><i class="fa fa-trash-o pointer" (click)="deleteById(subline._id)"></i></td>
                                 </tr>
                             </tbody>
                         </table>

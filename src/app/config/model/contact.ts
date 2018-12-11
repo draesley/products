@@ -3,7 +3,7 @@ import { Location } from "./location";
 
 export class Contact{
     constructor(
-        public id:number,
+        public _id:number,
         public code:number,
         public name:string,
         public lastname:string,
@@ -11,8 +11,8 @@ export class Contact{
         public phon:number,
         public movil:number,
         public email:string,
-        public userId:User,
-        public locationId:Location,
+        public user:User,
+        public location:Location,
     ){
 
     }

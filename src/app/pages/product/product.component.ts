@@ -4,6 +4,8 @@ import { Product } from '../../config/model/product';
 import { Subscription } from 'rxjs';
 import { CategoryService } from '../../pages/services/category.service';
 import { Category } from '../../config/model/category';
+import { Subline } from '../../config/model/subline';
+import { ImageService } from 'src/app/component/image/image.service';
 
 @Component({
   selector: 'app-product',
@@ -12,22 +14,27 @@ import { Category } from '../../config/model/category';
 })
 export class ProductComponent implements OnInit {
 
-  productList:Product[] = [];
+  products:Product[] = [];
   @Output()
   emmiter = new EventEmitter<boolean>();
   subscription:Subscription;
   model:Product;
   modelUp:Product;
-  subCategoryList:Category[] = [];
+  sublines:Subline[] = [];
   show:boolean = false;
   showup:boolean = false;
 
   constructor(private productService:ProductService,
-              private categoryService:CategoryService) { }
+              private categoryService:CategoryService,
+              public imageService:ImageService) { }
 
   ngOnInit() {
+    this.imageService.emitter.subscribe(res =>{
+      this.listProducts();
+      swal('Image Update','','success');
+    });
     this.listProducts();
-    this.listSubCategory();
+    this.listSublines();
     this.init();
   }
 
@@ -40,44 +47,47 @@ export class ProductComponent implements OnInit {
 
   init(){
     this.model = {
-      id:null,
+      _id:null,
       code:"",
       name:"",
       img:"",
       detail:"",
-      categoryId:null,
+      subline:null,
     }
   }
 
   init2(){
     this.model ={
-      id:null,
+      _id:null,
       code:"",
       name:"",
       img:"",
       detail:"",
-      categoryId:null,
+      subline:null,
     }
   }
 
   listProducts(){
     this.productService.listProduct().subscribe((res:any)=>{
-      this.productList = res;
+      this.products = res.products;
     });
   }
 
-  listSubCategory(){
+  listSublines(){
     this.categoryService.listSubLines().subscribe((res:any)=>{
-        this.subCategoryList = res;
+        this.sublines = res.sublines;
     });
+  }
+
+  showModal(id:string){
+    this.imageService.showModal('product', id);
   }
 
   save(product:Product){
-    if(product.name == "" || product.detail == "" || product.categoryId == null){
+    if(product.name == "" || product.detail == "" || product.subline == null){
         swal('Product','The Name, Detail and Category fields are required','warning');
         return;
     }
-
     this.productService.save(product);
     this.render();
     this.init();

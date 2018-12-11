@@ -34,17 +34,15 @@ export class CategoryComponent implements OnInit {
 
   init(){
     this.model = {
-      id:null,
-      name:"",
-      categoryId:null
+      _id:null,
+      name:""
     }
   }
 
   init2(){
     this.modelUp = {
-      id:null,
-      name:"",
-      categoryId:null
+      _id:null,
+      name:""
     }
   }
 
@@ -55,7 +53,7 @@ export class CategoryComponent implements OnInit {
 
   listCategory(){
     this.categoryService.listCategory().subscribe((res:any)=>{
-      this.categories = res;
+      this.categories = res.categories;
     })
   }
 

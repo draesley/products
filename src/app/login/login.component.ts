@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
 
   user:User;
   auth2:any;
+  rememberme:boolean = false;
+  email:string;
 
 
   constructor(private userService:UserService,
@@ -26,6 +28,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     initPlugin();
+    this.email = localStorage.getItem('email') || '';
+    if(this.email.length > 0){
+      this.rememberme = true;
+    }
     this.googleInit();
   }
 
@@ -43,49 +49,30 @@ export class LoginComponent implements OnInit {
 
   attachSignin(element){
     this.auth2.attachClickHandler(element, {}, (googleUser)=>{
-      let profile = googleUser.getBasicProfile();
+      //let profile = googleUser.getBasicProfile();
       let token = googleUser.getAuthResponse().id_token;
-      this.userService.loginGoogle(token).subscribe((res:any)=>{
-        this.userService.findByEmail(profile.U3).subscribe((res:any)=>{
-          this.user = res;
-          if(this.user == null){
-            swal('Unregistered user','','error');
-            return;
-          }
-              this.userService.login(this.user);
-       });
-        
+      this.userService.loginGoogle(token).subscribe(()=>{
+        return this.router.navigate(['/pages']);
       });
     });
-  }
+  } 
 
   signOut() {
       this.auth2 = gapi.auth2.getAuthInstance();
       this.auth2.signOut().then(function() {
-        localStorage.clear();
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        localStorage.removeItem('menu');
+        localStorage.removeItem('id');
       });
   }
 
   login(data:NgForm){
 
-    if(data.value.email == "" || data.value.password == ""){
-        swal('Email and Passwors is Required','','info');
-        return;
-    }
-   
-   this.userService.findByEmail(data.value.email).subscribe((res:any)=>{
-      
-      let pass = Md5.init(data.value.password);
-      this.user = res;
-      if(this.user == null || this.user.password != pass){
-        swal('incorrect username or password','','error');
-        return;
-      }
-
-      if(this.user.name === data.value.email || this.user.password === pass){
-          this.userService.login(this.user);
-      }
-
+   let user = new User(null, data.value.email, data.value.password);
+   this.userService.login(user, data.value.rememberme).subscribe(res=>{
+         // this.userService.loginOk();
+          return this.router.navigate(['/pages']);
    });
   }
 }

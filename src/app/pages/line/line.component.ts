@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { CategoryService } from '../../pages/services/category.service';
 import { Subscription } from 'rxjs';
 import { Category } from '../../config/model/category';
+import { Line } from '../../config/model/line';
 
 @Component({
   selector: 'app-line',
@@ -12,10 +13,10 @@ export class LineComponent implements OnInit {
   subscription:Subscription;
   @Output()
   emmiter = new EventEmitter<boolean>();
-  model:Category;
-  modelupdate:Category;
+  model:Line;
+  modelupdate:Line;
   show:boolean = false;
-  lines:Category[] = [];
+  lines:Line[] = [];
   categories:Category[] = [];
 
   constructor(private categoryService:CategoryService) { }
@@ -28,17 +29,17 @@ export class LineComponent implements OnInit {
 
   init(){
     this.model ={
-      id:null,
+      _id:null,
       name:"",
-      categoryId:null
+      category:null
     }
   }
 
   init2(){
     this.modelupdate = {
-      id:null,
+      _id:null,
       name:"",
-      categoryId:null
+      category:null
     }
   }
 
@@ -53,40 +54,29 @@ export class LineComponent implements OnInit {
     this.show = true;
   }
 
-  searchCategory(id:number){
-    
-    
-    this.categories.forEach(element => {
-      if(element.id = id){  
-          this.categories.push(element);
-      }
-    });
-
-  }
-  
   listCategory(){
     this.categoryService.listCategory().subscribe((res:any)=>{
-      this.categories = res;
+      this.categories = res.categories;
     });
   }
   
 
   listLines(){
     this.categoryService.listLines().subscribe((res:any)=>{
-      this.lines = res;
+      this.lines = res.lines;
     });
   }
 
-  save(category:Category){
+  save(line:Line){
 
-    if(category.name == ""){
+    if(line.name == ""){
       swal('Pleasse','Enter a name for the line','warning');
       return;
     }
 
     let index = 0;
     this.lines.forEach(element => {
-      if(category.name === element.name){
+      if(line.name === element.name && line.category._id === element.category._id){
           index +=1;
       }
     });
@@ -97,28 +87,28 @@ export class LineComponent implements OnInit {
       return;
     }
     
-    if(category.categoryId == null){
-      swal('Pleasse','Category null, contact technical service','warning');
+    if(line.category == null){
+      swal('Pleasse','Line null, contact technical service','warning');
       return;
     }else{
-      this.categoryService.saveLine(category);
+      this.categoryService.saveLine(line);
       this.render();
       this.init();
     }
   }
 
-  update(category:Category){
+  update(line:Line){
 
-      if(category.categoryId.id == null){
-        swal('Pleasse','Category null, contact technical service','warning');
+      if(line.category._id == null){
+        swal('Pleasse','Line null, contact technical service','warning');
         return;
       }
 
-      if( category.name == ""){
+      if( line.name == ""){
         swal('Pleasse','Enter a name for the line','warning');
         return;
       }else{
-        this.categoryService.updateLine(category);
+        this.categoryService.updateLine(line);
         this.render();
         this.init2();
         this.show = false;
@@ -139,11 +129,9 @@ export class LineComponent implements OnInit {
     })
     .then(deletes =>{
         if(deletes){
-          this.categoryService.deleteByIdCategory(id);
+          this.categoryService.deleteByIdLine(id);
           this.render();
         }
-    });
-    
+    }); 
   }
-
 }

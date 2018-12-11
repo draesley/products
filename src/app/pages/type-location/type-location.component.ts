@@ -26,14 +26,14 @@ export class TypeLocationComponent implements OnInit {
 
   init(){
     this.model ={
-      id:null,
+      _id:null,
       name:""
     }
   }
 
   init2(){
     this.modelUp ={
-      id:null,
+      _id:null,
       name:""
     }
   }
@@ -51,7 +51,7 @@ export class TypeLocationComponent implements OnInit {
 
   listTypeLocation(){
       this.typeLocationService.listTypeLocation().subscribe((res:any)=>{
-        this.typeLocationes = res;
+        this.typeLocationes = res.typeLocations;
       });
   }
 
@@ -75,13 +75,14 @@ export class TypeLocationComponent implements OnInit {
     }
 
 
-    if(typeLocation.id == null){
+    if(typeLocation._id == null){
       swal('TypeLocation id is required','contact technical service','warning');
       return;
     }
 
     this.typeLocationService.update(typeLocation);
     this.init2();
+    this.show = false;
     this.render();
   }
 

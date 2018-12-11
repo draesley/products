@@ -19,13 +19,13 @@
                         <tr>
                             <td><input type="text" name="description" [(ngModel)]="model.description" class="form-control" placeholder="Description" required></td>
                             <td>
-                                <select class="form-control" name="attributeId" [(ngModel)]="model.attributeId">
-                              <option *ngFor="let attribute of attributes" [ngValue] ="attribute.id">{{attribute.name}}</option>
+                                <select class="form-control" name="attribute" [(ngModel)]="model.attribute">
+                              <option *ngFor="let attribute of attributes" [ngValue] ="attribute._id">{{attribute.name}}</option>
                             </select>
                             </td>
                             <td>
-                                <select class="form-control" name="roleId" [(ngModel)]="model.productsId">
-                              <option *ngFor="let product of products" [ngValue] ="product.id">{{product.name}}</option>
+                                <select class="form-control" name="product" [(ngModel)]="model.product">
+                              <option *ngFor="let product of products" [ngValue] ="product._id">{{product.name}}</option>
                             </select>
                             </td>
                             <td><button type="button" class="btn btn-success btn-rounded btn-block" (click)="save(model)">Save</button></td>
@@ -58,13 +58,13 @@
                         <tr>
                             <td><input type="text" name="description" [(ngModel)]="modelUp.description" class="form-control" placeholder="Description" required></td>
                             <td>
-                                <select class="form-control" name="attributeId" [(ngModel)]="modelUp.attributeId">
-                            <option *ngFor="let attribute of attributes" [ngValue] ="attribute.id">{{attribute.name}}</option>
+                                <select class="form-control" name="attribute" [(ngModel)]="modelUp.attribute">
+                            <option *ngFor="let attribute of attributes" [ngValue] ="attribute._id">{{attribute.name}}</option>
                           </select>
                             </td>
                             <td>
-                                <select class="form-control" name="roleId" [(ngModel)]="modelUp.productsId">
-                            <option *ngFor="let product of products" [ngValue] ="product.id">{{product.name}}</option>
+                                <select class="form-control" name="roleId" [(ngModel)]="modelUp.product">
+                            <option *ngFor="let product of products" [ngValue] ="product._id">{{product.name}}</option>
                           </select>
                             </td>
                             <td><button type="button" class="btn btn-primary btn-rounded btn-block" (click)="update(modelUp)">Update</button></td>
@@ -84,7 +84,6 @@
                     <table class="table" id="table">
                         <thead>
                             <tr>
-                                <th scope="col">Id</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Attribute</th>
                                 <th scope="col">Product</th>
@@ -93,13 +92,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let attributeproduct of attributeProducts">
-                                <td>{{attributeproduct.id}}</td>
-                                <td>{{attributeproduct.description}}</td>
-                                <td>{{attributeproduct.attributeId.name}}</td>
-                                <td>{{attributeproduct.productsId.name}}</td>
-                                <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = attributeproduct"></i></td>
-                                <td><i class="fa fa-trash-o pointer" (click)="deleteById(attributeproduct.id)"></i></td>
+                            <tr *ngFor="let attipro of attributeProducts">
+                                <td>{{attipro.description}}</td>
+                                <td>{{attipro.attribute.name}}</td>
+                                <td>{{attipro.product.name}}</td>
+                                <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = attipro"></i></td>
+                                <td><i class="fa fa-trash-o pointer" (click)="deleteById(attipro._id)"></i></td>
                             </tr>
                         </tbody>
                     </table>

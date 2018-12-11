@@ -30,7 +30,6 @@
                     <table class="table" id="table">
                         <thead>
                             <tr>
-                                <th scope="col">id</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Update</th>
                                 <th scope="col">Delete</th>
@@ -38,10 +37,9 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let attribute of attributeList">
-                                <th scope="row">{{attribute.id}}</th>
                                 <td>{{attribute.name}}</td>
                                 <td><i class="fa fa-edit" (click)="showCard(attribute)"></i></td>
-                                <td><i class="fa fa-trash-o" (click)="delete(attribute.id)"></i></td>
+                                <td><i class="fa fa-trash-o" (click)="delete(attribute._id)"></i></td>
                             </tr>
                         </tbody>
                     </table>

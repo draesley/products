@@ -1,6 +1,4 @@
 import { RouterModule, Routes } from "@angular/router";
-import { ProgressComponent } from "./progress/progress.component";
-import { Grafic1Component } from "./grafic1/grafic1.component";
 import { AttributeComponent } from './attribute/attribute.component';
 import { CategoryComponent } from './category/category.component';
 import { LineComponent } from './line/line.component';
@@ -19,6 +17,8 @@ import { AttributeproductComponent } from './attributeproduct/attributeproduct.c
 import { AttributeProdcutCompanyComponent } from "./attribute-prodcut-company/attribute-prodcut-company.component";
 import { PagesComponent } from './pages.component';
 import { DashboardGuard } from '../services/dashboard.guard';
+import { ProfileComponent } from "./profile/profile.component";
+import { SearchComponent } from "./search/search.component";
 
 const pagesRoutes: Routes = [
             {
@@ -89,9 +89,17 @@ const pagesRoutes: Routes = [
                         component:AttributeproductComponent
                     },
                     {
-                        path:'attribute-prodcut-company',
+                        path:'profile',
+                        component:ProfileComponent
+                    },
+                    {
+                        path:'attribute-product-company',
                         component:AttributeProdcutCompanyComponent
                     },
+                    {
+                        path:'search/:index',
+                        component:SearchComponent
+                    }
                 ]
             }
      

@@ -37,7 +37,7 @@ export class ContactComponent implements OnInit {
 
   init(){
     this.model = {
-      id:null,
+      _id:null,
       code:null,
       name:"",
       adress:"",
@@ -45,14 +45,14 @@ export class ContactComponent implements OnInit {
       email:"",
       movil:null,
       phon:null,
-      locationId:null,
-      userId:null
+      location:null,
+      user:null
     }
   }
 
   init2(){
     this.modelUp = {
-      id:null,
+      _id:null,
       code:null,
       name:"",
       adress:"",
@@ -60,8 +60,8 @@ export class ContactComponent implements OnInit {
       email:"",
       movil:null,
       phon:null,
-      locationId:null,
-      userId:null
+      location:null,
+      user:null
     }
   }
 
@@ -74,22 +74,22 @@ export class ContactComponent implements OnInit {
 
   chargeList(){
     this.locationService.listLocation().subscribe((res:any)=>{
-      this.locations = res;
+      this.locations = res.locations;
     });
 
     this.userService.listUser().subscribe((res:any)=>{
-      this.users = res;
+      this.users = res.users;
     });
   }
 
   listContact(){
     this.contactService.listContacts().subscribe((res:any)=>{
-        this.contacts = res;
+        this.contacts = res.contacts;
     });
   }
 
   save(contact:Contact){
-    if(contact.code == null || contact.name == "" || contact.lastname == "" || contact.locationId == null || contact.userId == null){
+    if(contact.code == null || contact.name == "" || contact.lastname == "" || contact.location == null || contact.user == null){
         swal('Contact Required','Code, Name, Last-name, Location and User','warning');
         return;
     }
@@ -101,12 +101,12 @@ export class ContactComponent implements OnInit {
   }
 
   update(contact:Contact){
-    if(contact.code == null || contact.name == "" || contact.lastname == "" || contact.locationId == null || contact.userId == null){
+    if(contact.code == null || contact.name == "" || contact.lastname == "" || contact.location == null || contact.user == null){
       swal('Contact Required','Code, Name, Last-name, Location and User','warning');
       return;
     }
 
-    if(contact.id == null){
+    if(contact._id == null){
       swal('contact technical service','Contatc Id is required','warning');
       return;
     }

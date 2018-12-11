@@ -28,6 +28,12 @@ import { MenuService } from "../services/menu.service";
 import { PipesModule } from "../pipes/pipes.module";
 import { UploadFileService } from "./services/upload-file.service";
 import { AngularSplitModule } from 'angular-split';
+import { RouterModule } from '@angular/router';
+import { UserService } from "./services/user.service";
+import { ProfileComponent } from './profile/profile.component';
+import { ImageComponent } from "../component/image/image.component";
+import { ImageService } from "../component/image/image.service";
+import { SearchComponent } from './search/search.component';
 
 /* export function tokenGetter() {
     return localStorage.getItem('access_token');
@@ -53,7 +59,10 @@ import { AngularSplitModule } from 'angular-split';
         CompanyComponent,
         AttributeproductComponent,
         AttributeProdcutCompanyComponent,
-        PagesComponent
+        PagesComponent,
+        ProfileComponent,
+        ImageComponent,
+        SearchComponent
     ],
     exports:[
         ProgressComponent,
@@ -69,19 +78,14 @@ import { AngularSplitModule } from 'angular-split';
         CommonModule,
         FormsModule,
         PipesModule,
-        AngularSplitModule
-        /* JwtModule.forRoot({
-            config: {
-              tokenGetter: tokenGetter,
-              whitelistedDomains: ['localhost:4200'],
-              blacklistedRoutes: ['localhost:8080']
-            }
-          }) */
+        AngularSplitModule,
     ],
     providers:[
         ContactService,
         MenuService,
-        UploadFileService
+        UploadFileService,
+        UserService,
+        ImageService
     ]
 })
 export class PagesModule{}

@@ -1,0 +1,25 @@
+<div class="tapiz animated fadeIn" [ngClass]="imageService.oculto">
+    <div class="modal" style="display:block;" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" (click)="hiddenModal()" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body text-center">
+
+                    <img *ngIf="!imgTemp" [src]="'xxxx' | image" class="w150"><br>
+                    <img *ngIf="imgTemp" [src]="imgTemp" class="w150"><br>
+                    <input type="file" (change)="selectedImg($event.target.files[0])">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" (click)="uploadImgs()" [disabled]="!imgTemp" class="btn btn-primary">Upload Image</button>
+                    <button type="button" class="btn btn-secondary" (click)="hiddenModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

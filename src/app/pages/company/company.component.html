@@ -25,17 +25,17 @@
                             <td><input type="text" name="nit" [(ngModel)]="model.nit" class="form-control" placeholder="Nit" required></td>
                             <td><input type="text" name="name" [(ngModel)]="model.name" class="form-control" placeholder="Name" required></td>
                             <td><input type="text" name="adress" [(ngModel)]="model.adress" class="form-control" placeholder="Adress" required></td>
-                            <td><input type="number" name="phon1" [(ngModel)]="model.phon1" class="form-control" placeholder="Phon" required></td>
+                            <td><input type="number" name="phon" [(ngModel)]="model.phon" class="form-control" placeholder="Phon" required></td>
                             <td><input type="number" name="movil" [(ngModel)]="model.movil" class="form-control" placeholder="Movil" required></td>
                             <td><input type="email" name="email" [(ngModel)]="model.email" class="form-control" placeholder="Email" required></td>
                             <td>
-                                <select class="form-control" name="contactId" [(ngModel)]="model.contactId">
-                                <option *ngFor="let contact of contacts" [ngValue] ="contact.id">{{contact.name}}</option>
+                                <select class="form-control" name="contact" [(ngModel)]="model.contact">
+                                <option *ngFor="let contact of contacts" [ngValue] ="contact._id">{{contact.name}}</option>
                               </select>
                             </td>
                             <td>
-                                <select class="form-control" name="roleId" [(ngModel)]="model.locationId">
-                                <option *ngFor="let location of locations" [ngValue] ="location.id">{{location.name}}</option>
+                                <select class="form-control" name="role" [(ngModel)]="model.location">
+                                <option *ngFor="let location of locations" [ngValue] ="location._id">{{location.name}}</option>
                               </select>
                             </td>
                         </tr>
@@ -76,22 +76,22 @@
                             <td><input type="text" name="nit" [(ngModel)]="modelUp.nit" class="form-control" placeholder="Nit" required></td>
                             <td><input type="text" name="name" [(ngModel)]="modelUp.name" class="form-control" placeholder="Name" required></td>
                             <td><input type="text" name="adress" [(ngModel)]="modelUp.adress" class="form-control" placeholder="Adress" required></td>
-                            <td><input type="number" name="phon1" [(ngModel)]="modelUp.phon1" class="form-control" placeholder="Phon" required></td>
+                            <td><input type="number" name="phon" [(ngModel)]="modelUp.phon" class="form-control" placeholder="Phon" required></td>
                             <td><input type="number" name="movil" [(ngModel)]="modelUp.movil" class="form-control" placeholder="Movil" required></td>
                             <td><input type="email" name="email" [(ngModel)]="modelUp.email" class="form-control" placeholder="Email" required></td>
                             <td>
-                                <select class="form-control" name="contactId" [(ngModel)]="modelUp.contactId">
-                                <option *ngFor="let contact of contacts" [ngValue] ="contact.id">{{contact.name}}</option>
+                                <select class="form-control" name="contact" [(ngModel)]="modelUp.contact">
+                                <option *ngFor="let contact of contacts" [ngValue] ="contact._id">{{contact.name}}</option>
                               </select>
                             </td>
                             <td>
-                                <select class="form-control" name="roleId" [(ngModel)]="modelUp.locationId">
-                                <option *ngFor="let location of locations" [ngValue] ="location.id">{{location.name}}</option>
+                                <select class="form-control" name="role" [(ngModel)]="modelUp.location">
+                                <option *ngFor="let location of locations" [ngValue] ="location._id">{{location.name}}</option>
                               </select>
                             </td>
                         </tr>
                         <tr>
-                            <td><button type="button" class="btn btn-primary btn-rounded btn-block" (click)="save(modelUp)">Update</button></td>
+                            <td><button type="button" class="btn btn-primary btn-rounded btn-block" (click)="update(modelUp)">Update</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -125,22 +125,18 @@
                                 <td>{{company.nit}}</td>
                                 <td>{{company.name}}</td>
                                 <td>{{company.adress}}</td>
-                                <td>{{company.phon1}}</td>
+                                <td>{{company.phon}}</td>
                                 <td>{{company.movil}}</td>
                                 <td>{{company.email}}</td>
-                                <td>{{company.contactId.name}}</td>
-                                <td>{{company.locationId.name}}</td>
+                                <td>{{company.contact.name}}</td>
+                                <td>{{company.location.name}}</td>
                                 <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = company"></i></td>
-                                <td><i class="fa fa-trash-o pointer" (click)="deleteById(company.id)"></i></td>
+                                <td><i class="fa fa-trash-o pointer" (click)="deleteById(company._id)"></i></td>
                             </tr>
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <td><button class="btn btn-success btn-rounded" (click)="show=true">New Company</button></td>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
+                <td><button class="btn btn-success btn-rounded" (click)="show=true">New Company</button></td>
             </div>
         </div>
     </div>

@@ -6,10 +6,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle font-bold text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
+                <a class="nav-link dropdown-toggle font-bold text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Search</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Services</a>
+                    <a class="dropdown-item" href="#">Products</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Something else here</a>
                 </div>
@@ -32,7 +32,7 @@
                 <div class="card">
                     <div class="card-title text-center cardF font-bold">{{product.name}}</div>
                     <div class="el-card-item">
-                        <div class="el-card-avatar el-overlay-1"> <img src="../../../assets/images/no-img.jpg" alt="user" class="img-fluid" /></div>
+                        <div class="el-card-avatar el-overlay-1"> <img [src]="product.img | image:'product'" alt="user" class="img-fluid img" /></div>
                     </div>
                 </div>
             </div>

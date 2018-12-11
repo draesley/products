@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
 
   listProducts(){
       this.productService.listProduct().subscribe((res:any)=>{
-        this.products = res;
+        this.products = res.products;
       });
   }
 
@@ -46,7 +46,7 @@ export class DashboardComponent implements OnInit {
       return;
     }
     this.productService.searchProduct(index).subscribe((res:any)=>{
-      this.products = res;
+      this.products = res.products;
     });
   }
 

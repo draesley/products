@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-5">
+        <div class="card">
+            <div class="card-body">
+                <form ngNativeValidate #f="ngForm" (ngSubmit)="update(f.value)" class="form p-t-20">
+                    <div class="form-group">
+                        <label for="name">Profile User</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" [ngModel]="user.name" class="form-control" name="name" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input type="email" [ngModel]="user.email" [disabled]="user.google" class="form-control" name="email" placeholder="Enter email">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                      <i class="fa fa-save"></i>
+                      Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col- 6">
+        <div class="card">
+            <div class="card-body center">
+                <div class="card-title">Picture</div>
+                <img *ngIf="!imgTemp" [src]="user.img | image" class="w150"><br>
+                <img *ngIf="imgTemp" [src]="imgTemp" class="w150"><br>
+                <input type="file" (change)="selectedImg($event.target.files[0])">
+                <br><br>
+                <button (click)="changeImg()" [disabled]="!uploadimg" type="button" class="btn btn-success waves-effect waves-light m-r-10 btn-block">
+                    <i class="fa fa-save"></i>
+                    Update Img
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

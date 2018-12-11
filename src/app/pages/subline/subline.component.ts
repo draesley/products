@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CategoryService } from '../../pages/services/category.service';
 import { Category } from '../../config/model/category';
 import { Subscription } from 'rxjs';
+import { Subline } from '../../config/model/subline';
+import { Line } from '../../config/model/line';
 
 @Component({
   selector: 'app-subline',
@@ -10,14 +12,16 @@ import { Subscription } from 'rxjs';
 })
 export class SublineComponent implements OnInit {
 
-  subLinesList:Category[] = [];
+  subLines:Subline[] = [];
   @Output()
   emmiter = new EventEmitter<boolean>();
   subscription:Subscription;
   show:boolean = false;
-  model:Category;
-  lines:Category[] = [];
-  modelupdate:Category;
+  model:Subline;
+  lines:Subline[] = [];
+  modelupdate:Subline;
+  categoryName:string = "";
+  categoryNameu:string = "";
 
   constructor(private categoryService:CategoryService) { }
 
@@ -29,17 +33,17 @@ export class SublineComponent implements OnInit {
 
   init(){
     this.model = {
-      id:null,
+      _id:null,
       name:"",
-      categoryId:null
+      line:null
     }
   }
 
   init2(){
     this.modelupdate = {
-      id:null,
+      _id:null,
       name:"",
-      categoryId:null
+      line:null
     }
   }
 
@@ -56,26 +60,32 @@ export class SublineComponent implements OnInit {
 
   listSublines(){
     this.categoryService.listSubLines().subscribe((res:any)=>{
-      this.subLinesList = res;
+      this.subLines = res.sublines;
     })
   }
 
   listLines(){
     this.categoryService.listLines().subscribe((res:any)=>{
-      this.lines = res;
+      this.lines = res.lines;
     });
   }
 
-  save(category:Category){
+  searchLine(index:any){
+     this.categoryName = index.category.name;
+    console.log(index);
 
-    if(category.name == ""){
+  }
+
+  save(subline:Subline){
+
+    if(subline.name == ""){
       swal('Pleasse','Enter a name for the Subline','warning');
       return;
     }
 
     let index = 0;
-    this.subLinesList.forEach(element => {
-      if(category.name === element.name){
+    this.subLines.forEach(element => {
+      if(subline.name === element.name && subline.line._id === element.line._id){
           index +=1;
       }
     });
@@ -86,30 +96,33 @@ export class SublineComponent implements OnInit {
       return;
     }
     
-    if(category.categoryId == null){
+    if(subline.line == null){
       swal('Pleasse','Select a Category','warning');
       return;
     }else{
-      this.categoryService.saveLine(category);
+      console.log(subline);
+      this.categoryService.saveSubLine(subline);
       this.render();
       this.init();
+      this.categoryName = "";
     }
   }
 
-  update(category:Category){
+  update(subline:Subline){
 
-    if(category.categoryId.id == null){
+    if(subline.line._id == null){
       swal('Pleasse','Category null, contact technical service','warning');
       return;
     }
 
-    if( category.name == ""){
+    if( subline.name == ""){
       swal('Pleasse','Enter a name for the line','warning');
       return;
     }else{
-      this.categoryService.updateLine(category);
+      this.categoryService.updateSubLine(subline);
       this.render();
       this.init2();
+      this.categoryNameu = "";
       this.show = false;
     }
   }
@@ -128,7 +141,7 @@ export class SublineComponent implements OnInit {
     })
     .then(deletes =>{
         if(deletes){
-          this.categoryService.deleteByIdCategory(id);
+          this.categoryService.deleteByIdSubline(id);
           this.render();
         }
     });

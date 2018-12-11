@@ -1,10 +1,9 @@
 import { Department } from './department';
 export class City{
     constructor(
-        public id:number,
-        public code:number,
+        public _id:number,
         public name:string,
-        public departmentId:Department,
+        public department:Department,
     ){
 
     }

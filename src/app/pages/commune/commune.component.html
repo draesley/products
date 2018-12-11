@@ -29,7 +29,6 @@
                         <table class="table" id="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">id</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Update</th>
                                     <th scope="col">Delete</th>
@@ -37,10 +36,9 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let commune of communes">
-                                    <th scope="row">{{commune.id}}</th>
                                     <td>{{commune.name}}</td>
                                     <td><i class="fa fa-edit pointer" (click)="showCard(); modelUp = commune"></i></td>
-                                    <td><i class="fa fa-trash-o pointer" (click)="deleteById(commune.id)"></i></td>
+                                    <td><i class="fa fa-trash-o pointer" (click)="deleteById(commune._id)"></i></td>
                                 </tr>
                             </tbody>
                         </table>

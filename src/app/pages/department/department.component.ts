@@ -28,16 +28,14 @@ export class DepartmentComponent implements OnInit {
 
   init(){
     this.model ={
-      id:null,
-      code:null,
+      _id:null,
       name:""
     }
   }
 
   init2(){
     this.modelUp ={
-      id:null,
-      code:null,
+      _id:null,
       name:""
     }
   }
@@ -55,19 +53,19 @@ export class DepartmentComponent implements OnInit {
 
   listDepartment(){
     this.departmentservice.listDepartment().subscribe((res:any)=>{
-      this.departments = res;
+      this.departments = res.departments;
     });
   }
 
   save(department:Department){
-    if(department.code == null || department.name == ""){
+    if(department.name == ""){
       swal('Name and Code is required','','warning');
       return;
     }
 
     let index = 0;
     this.departments.forEach(element => {
-      if(department.name === element.name || department.code === element.code){
+      if(department.name === element.name){
           index += 1;
       }
     });
@@ -83,12 +81,12 @@ export class DepartmentComponent implements OnInit {
   }
 
   update(department:Department){
-      if(department.code == null || department.name == ""){
+      if(department.name == ""){
         swal('Name and Code is required','','warning');
         return;
       }
 
-      if(department.id == null){
+      if(department._id == null){
         swal('Id null, contact technical service','warning');
         return;
       }else{

@@ -36,20 +36,20 @@ export class AttributeproductComponent implements OnInit {
 
   init(){
     this.model = {
-      id:null,
+      _id:null,
       description:"",
-      attributeId:null,
-      productsId:null
+      attribute:null,
+      product:null
 
     };
   }
 
   init2(){
     this.modelUp = {
-      id:null,
+      _id:null,
       description:"",
-      attributeId:null,
-      productsId:null
+      attribute:null,
+      product:null
 
     };
   }
@@ -64,22 +64,23 @@ export class AttributeproductComponent implements OnInit {
 
   listAtributeProducts(){
     this.attributeProductService.listAttributeProduct().subscribe((res:any)=>{
-      this.attributeProducts = res;
+      this.attributeProducts = res.attributeProduct;
+
     });
   }
 
   chargeList(){
     this.attributeService.getlist().subscribe((res:any)=>{
-      this.attributes = res;
+      this.attributes = res.attributes;
     });
 
     this.productService.listProduct().subscribe((res:any)=>{
-      this.products = res;
+      this.products = res.products;
     });
   }
 
   save(attributePro:AttributeProduct){
-    if(attributePro.description == "" || attributePro.attributeId == null || attributePro.productsId == null){
+    if(attributePro.description == "" || attributePro.attribute == null || attributePro.product == null){
         swal('Attribute-Products Required','Description, Attribute and Product','warning');
         return;
     };
@@ -91,12 +92,12 @@ export class AttributeproductComponent implements OnInit {
   }
 
   update(attributePro:AttributeProduct){
-    if(attributePro.description == "" || attributePro.attributeId == null || attributePro.productsId == null){
+    if(attributePro.description == "" || attributePro.attribute == null || attributePro.product == null){
         swal('Attribute-Products Required','Description, Attribute and Product','warning');
         return;
     };
 
-    if(attributePro.id == null){
+    if(attributePro._id == null){
       swal('contact technical service','Attribute Product Id is required','warning');
       return;
     }

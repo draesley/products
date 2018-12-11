@@ -2,10 +2,13 @@ import { Role } from "./role";
 
 export class User{
     constructor(
-        public id:number,
+        
         public name:string,
-        public img:string,
+        public email:string,
         public password:string,
-        public roleId:Role,
+        public img?:string,
+        public google?:boolean,
+        public role?:Role,
+        public _id?:string
     ){}
 }

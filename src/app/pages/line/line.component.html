@@ -8,8 +8,8 @@
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
-                    <select class="form-control" name="categoryId" [(ngModel)]="model.categoryId" (change)="searchCategory(model.categoryId)">
-                        <option *ngFor="let category of categories" [ngValue] ="category.id">{{category.name}}</option>
+                    <select class="form-control" name="category" [(ngModel)]="model.category">
+                        <option *ngFor="let category of categories" [ngValue] ="category">{{category.name}}</option>
                     </select>
                 </div>
                 <button type="button" class="btn btn-success btn-rounded btn-block" (click)="save(model)">Save</button>
@@ -18,13 +18,13 @@
         <div class="card" *ngIf="show">
             <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1"><i class="fa fa-times-circle pointer" (click)="show = false"></i></label>
+                    <label for="name"><i class="fa fa-times-circle pointer" (click)="show = false"></i></label>
                     <input type="text" name="name" [(ngModel)]="modelupdate.name" class="form-control" aria-describedby="name" placeholder="Name">
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
-                    <select class="form-control" name="category" [(ngModel)]="modelupdate.categoryId">
-                        <option *ngFor="let category of categories" [ngValue] ="category.id">{{category.name}}</option>
+                    <select class="form-control" name="category" [(ngModel)]="modelupdate.category">
+                        <option *ngFor="let category of categories" [ngValue] ="category._id">{{category.name}}</option>
                     </select>
                 </div>
                 <button type="button" class="btn btn-primary btn-rounded btn-block" (click)=update(modelupdate)>Update</button>
@@ -39,7 +39,6 @@
                         <table class="table" id="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">id</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Category</th>
                                     <th scope="col">Update</th>
@@ -47,12 +46,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let category of lines">
-                                    <th scope="row">{{category.id}}</th>
-                                    <td>{{category.name}}</td>
-                                    <td>{{category.categoryId.name}}</td>
-                                    <td><i class="fa fa-edit pointer" (click)="modelupdate = category; showCard()"></i></td>
-                                    <td><i class="fa fa-trash-o pointer" (click)="deleteById(category.id)"></i></td>
+                                <tr *ngFor="let line of lines">
+                                    <td>{{line.name}}</td>
+                                    <td>{{line.category.name}}</td>
+                                    <td><i class="fa fa-edit pointer" (click)="modelupdate = line; showCard()"></i></td>
+                                    <td><i class="fa fa-trash-o pointer" (click)="deleteById(line._id)"></i></td>
                                 </tr>
                             </tbody>
                         </table>

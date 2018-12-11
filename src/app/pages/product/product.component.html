@@ -22,8 +22,8 @@
                             <td><input type="text" name="name" [(ngModel)]="model.name" class="form-control" placeholder="name" required></td>
                             <td><input type="text" name="detail" [(ngModel)]="model.detail" class="form-control" placeholder="Detail"></td>
                             <td>
-                                <select class="form-control" name="categoryId" [(ngModel)]="model.categoryId">
-                                    <option *ngFor="let category of subCategoryList" [ngValue] ="category.id">{{category.name}}</option>
+                                <select class="form-control" name="category" [(ngModel)]="model.subline">
+                                    <option *ngFor="let subline of sublines" [ngValue] ="subline">{{subline.name}}</option>
                                 </select>
                             </td>
                         </tr>
@@ -61,8 +61,8 @@
                             <td><input type="text" name="name" [(ngModel)]="modelUp.name" class="form-control" placeholder="Name" required></td>
                             <td><input type="text" name="detail" [(ngModel)]="modelUp.detail" class="form-control" placeholder="Detail"></td>
                             <td>
-                                <select class="form-control" name="categoryId" [(ngModel)]="modelUp.categoryId">
-                                        <option *ngFor="let category of subCategoryList" [ngValue] ="category.id">{{category.name}}</option>
+                                <select class="form-control" name="subline" [(ngModel)]="modelUp.subline">
+                                        <option *ngFor="let subline of sublines" [ngValue] ="subline">{{subline.name}}</option>
                                     </select>
                             </td>
                         </tr>
@@ -84,8 +84,7 @@
                     <table class="table table-bordered table-responsive">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Code</th>
+                                <th></th>
                                 <th>Name</th>
                                 <th>Detail</th>
                                 <th>Category</th>
@@ -94,14 +93,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let product of productList">
-                                <td>{{product.id}}</td>
-                                <td>{{product.code}}</td>
+                            <tr *ngFor="let product of products">
+                                <td>
+                                    <img [src]="product.img | image:'product'" class="rounded-circle w70 pointer" (click)="showModal(product._id)">
+                                </td>
                                 <td>{{product.name}}</td>
                                 <td>{{product.detail}}</td>
-                                <td>{{product.categoryId.name}}</td>
+                                <td>{{product.subline.name}}</td>
                                 <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = product"></i></td>
-                                <td><i class="fa fa-trash-o pointer" (click)="deleteByid(product.id)"></i></td>
+                                <td><i class="fa fa-trash-o pointer" (click)="deleteByid(product._id)"></i></td>
                             </tr>
                         </tbody>
                     </table>

@@ -28,14 +28,14 @@ export class RoleComponent implements OnInit {
 
   init(){
     this.model = {
-      id:null,
+      _id:null,
       name:""
     };
   }
 
   init2(){
     this.modelUp = {
-      id:null,
+      _id:null,
       name:""
     };
   }
@@ -53,7 +53,7 @@ export class RoleComponent implements OnInit {
 
   listRoles(){
       this.roleService.listRoles().subscribe((res:any)=>{
-        this.roles = res;
+        this.roles = res.roles;
       });
   }
 
@@ -86,7 +86,7 @@ export class RoleComponent implements OnInit {
       return;
     }
 
-    if(role.id == null){
+    if(role._id == null){
       swal('contact technical service','Role id is required','warning');
       return;
     }

@@ -29,7 +29,6 @@
                         <table class="table" id="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">id</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Update</th>
                                     <th scope="col">Delete</th>
@@ -37,10 +36,9 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let typeLocation of typeLocationes">
-                                    <th scope="row">{{typeLocation.id}}</th>
                                     <td>{{typeLocation.name}}</td>
                                     <td><i class="fa fa-edit pointer" (click)="showCard(); modelUp = typeLocation"></i></td>
-                                    <td><i class="fa fa-trash-o pointer" (click)="deleteById(typeLocation.id)"></i></td>
+                                    <td><i class="fa fa-trash-o pointer" (click)="deleteById(typeLocation._id)"></i></td>
                                 </tr>
                             </tbody>
                         </table>

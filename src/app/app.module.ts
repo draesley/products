@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { MenuService } from './services/menu.service';
 import { FlipModule } from 'ngx-flip';
 import { DashboardGuard } from './services/dashboard.guard';
+import { ImageService } from './component/image/image.service';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -34,11 +36,13 @@ import { DashboardGuard } from './services/dashboard.guard';
     RouterModule,
     HttpClientModule,
     SharedModule,
-    FlipModule
+    FlipModule,
+    PipesModule
   ],
   providers: [
     DashboardGuard,
-    MenuService
+    MenuService,
+    ImageService
   ],
   bootstrap: [AppComponent]
 })

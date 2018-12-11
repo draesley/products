@@ -36,32 +36,32 @@ export class CompanyComponent implements OnInit {
 
   init(){
     this.model = {
-      id:null,
+      _id:null,
       nit:"",
       name:"",
       adress:"",
-      phon1:null,
+      phon:null,
       movil:null,
       img:"",
       email:"",
-      locationId:null,
-      contactId:null,
+      location:null,
+      contact:null,
     }
   }
 
 
   init2(){
     this.modelUp = {
-      id:null,
+      _id:null,
       nit:"",
       name:"",
       adress:"",
-      phon1:null,
+      phon:null,
       movil:null,
       img:"",
       email:"",
-      locationId:null,
-      contactId:null,
+      location:null,
+      contact:null,
     }
   }
 
@@ -74,22 +74,22 @@ export class CompanyComponent implements OnInit {
 
   listCompanies(){
     this.companyService.listCompany().subscribe((res:any)=>{
-      this.companies = res;
+      this.companies = res.companies;
     });
   }
 
   chargeList(){
     this.contactService.listContacts().subscribe((res:any)=>{
-      this.contacts = res;
+      this.contacts = res.contacts;
     });
 
     this.locationService.listLocation().subscribe((res:any)=>{
-      this.locations = res;
+      this.locations = res.locations;
     });
   }
 
   save(company:Company){
-    if(company.nit == "" || company.name == "" || company.adress == "" || company.contactId == null || company.locationId == null){
+    if(company.nit == "" || company.name == "" || company.adress == "" || company.contact == null || company.location == null){
       swal('Company Required','Nit, Name, Adress, Contact and Location','warning');
       return;
     };
@@ -101,12 +101,12 @@ export class CompanyComponent implements OnInit {
   }
 
   update(company:Company){
-    if(company.nit == "" || company.name == "" || company.adress == "" || company.contactId == null || company.locationId == null){
+    if(company.nit == "" || company.name == "" || company.adress == "" || company.contact == null || company.location == null){
       swal('Company Required','Nit, Name, Adress, Contact and Location','warning');
       return;
     };
 
-    if(company.id == null){
+    if(company._id == null){
       swal('contact technical service','Company Id is required','warning');
       return;
     };

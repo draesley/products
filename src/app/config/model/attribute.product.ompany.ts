@@ -1,10 +1,10 @@
 import { Company } from './company';
-import { AttributeProduct } from './attributeproduct';
+import { Product } from './product';
 export class AttributeProductCompany{
     constructor(
-        public id:number,
+        public _id:string,
         public price:number,
-        public companyId:Company,
-        public attributeproductsId:AttributeProduct,
+        public company:Company,
+        public product:Product,
     ){}
 }

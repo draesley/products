@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { API_ROUTE } from '../../config/apirute';
 import { TypeLocation } from '../../config/model/type.location';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +14,17 @@ export class TypeLocationService {
   public observable = this.subject.asObservable();
 
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+              private userService:UserService) { }
 
   listTypeLocation(){
-    let url = API_ROUTE + 'typeLocation/findAll';
+    let url = API_ROUTE + 'typeLocation';
     return this.http.get(url);
   }
 
   save(typeLocation:TypeLocation){
-    let url = API_ROUTE + 'typeLocation/save';
+    let url = API_ROUTE + 'typeLocation';
+    url += '?token=' + this.userService.token;
     this.http.post(url,typeLocation).subscribe(()=>{
       swal('TypeLocation Save','','success');
       this.subject.next();
@@ -29,7 +32,8 @@ export class TypeLocationService {
   }
 
   update(typeLocation:TypeLocation){
-    let url = API_ROUTE + 'typeLocation/update';
+    let url = API_ROUTE + 'typeLocation/' + typeLocation._id;
+    url += '?token=' + this.userService.token;
     this.http.put(url,typeLocation).subscribe(()=>{
       swal('TypeLocation Update','','success');
       this.subject.next();
@@ -37,7 +41,8 @@ export class TypeLocationService {
   }
 
   deleteById(id:number){
-    let url = API_ROUTE + 'typeLocation/deleteById/' + id;
+    let url = API_ROUTE + 'typeLocation/' + id;
+    url += '?token=' + this.userService.token;
     this.http.delete(url).subscribe(()=>{
       swal('TypeLocation Remove','','success');
       this.subject.next();

@@ -1,12 +1,12 @@
-import { Category } from './category';
+import { Subline } from './subline';
 export class Product{
     constructor(
-        public  id:number,
+        public  _id:number,
         public code:string,
         public name:string,
         public img:string,
         public detail:string,
-        public categoryId:Category
+        public subline:Subline
     ){}
 }
 

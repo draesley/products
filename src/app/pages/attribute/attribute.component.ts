@@ -37,13 +37,13 @@ export class AttributeComponent implements OnInit {
 
   listAttribute(){
     this.attributeService.getlist().subscribe((res:any)=>{
-      this.attributeList = res;
+      this.attributeList = res.attributes;
     });
   }
 
   init(){
     this.attribute ={
-      id:null,
+      _id:null,
       name:""
     }
   }
@@ -70,6 +70,7 @@ export class AttributeComponent implements OnInit {
         this.render();
         this.name = "";
         index = 0;
+        this.showcarnew = false;
       }
   }
 

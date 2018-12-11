@@ -12,7 +12,7 @@
                         <tr>
                             <th scope="col">Code</th>
                             <th scope="col">Name</th>
-                            <th scope="col">LastName</th>
+                            <th scope="col">Last Name</th>
                             <th scope="col">Adress</th>
                             <th scope="col">Phon</th>
                             <th scope="col">Movil</th>
@@ -29,13 +29,13 @@
                             <td><input type="number" name="phon" [(ngModel)]="model.phon" class="form-control" placeholder="Phon" required></td>
                             <td><input type="number" name="movil" [(ngModel)]="model.movil" class="form-control" placeholder="Movil" required></td>
                             <td>
-                                <select class="form-control" name="userId" [(ngModel)]="model.userId">
-                                <option *ngFor="let user of users" [ngValue] ="user.id">{{user.name}}</option>
+                                <select class="form-control" name="user" [(ngModel)]="model.user">
+                                <option *ngFor="let user of users" [ngValue] ="user._id">{{user.name}}</option>
                               </select>
                             </td>
                             <td>
-                                <select class="form-control" name="roleId" [(ngModel)]="model.locationId">
-                                <option *ngFor="let location of locations" [ngValue] ="location.id">{{location.name}}</option>
+                                <select class="form-control" name="location" [(ngModel)]="model.location">
+                                <option *ngFor="let location of locations" [ngValue] ="location._id">{{location.name}}</option>
                               </select>
                             </td>
                         </tr>
@@ -63,7 +63,7 @@
                         <tr>
                             <th scope="col">Code</th>
                             <th scope="col">Name</th>
-                            <th scope="col">LastName</th>
+                            <th scope="col">Last Name</th>
                             <th scope="col">Adress</th>
                             <th scope="col">Phon</th>
                             <th scope="col">Movil</th>
@@ -80,13 +80,13 @@
                             <td><input type="number" name="phon" [(ngModel)]="modelUp.phon" class="form-control" placeholder="Phon" required></td>
                             <td><input type="number" name="movil" [(ngModel)]="modelUp.movil" class="form-control" placeholder="Movil" required></td>
                             <td>
-                                <select class="form-control" name="userId" [(ngModel)]="modelUp.userId">
-                                <option *ngFor="let user of users" [ngValue] ="user.id">{{user.name}}</option>
+                                <select class="form-control" name="user" [(ngModel)]="modelUp.user">
+                                <option *ngFor="let user of users" [ngValue] ="user._id">{{user.name}}</option>
                               </select>
                             </td>
                             <td>
-                                <select class="form-control" name="roleId" [(ngModel)]="modelUp.locationId">
-                                <option *ngFor="let location of locations" [ngValue] ="location.id">{{location.name}}</option>
+                                <select class="form-control" name="location" [(ngModel)]="modelUp.location">
+                                <option *ngFor="let location of locations" [ngValue] ="location._id">{{location.name}}</option>
                               </select>
                             </td>
                         </tr>
@@ -110,7 +110,7 @@
                             <tr>
                                 <th scope="col">Code</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">LastName</th>
+                                <th scope="col">Last Name</th>
                                 <th scope="col">Adress</th>
                                 <th scope="col">Phon</th>
                                 <th scope="col">Movil</th>
@@ -127,7 +127,7 @@
                                 <td>{{contact.phon}}</td>
                                 <td>{{contact.movil}}</td>
                                 <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = contact"></i></td>
-                                <td><i class="fa fa-trash-o pointer" (click)="deleteById(contact.id)"></i></td>
+                                <td><i class="fa fa-trash-o pointer" (click)="deleteById(contact._id)"></i></td>
                             </tr>
                         </tbody>
                         <tfoot>

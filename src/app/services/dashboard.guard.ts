@@ -15,14 +15,10 @@ export class DashboardGuard implements CanActivate {
   canActivate(){
 
     if(this.userService.loginOk()){
-      console.log('paso ppor el dashboard');
       return true;
     }else{
-      console.log('bloqueaddoo');
       this.router.navigate(['/']);
       return false;
-    }
-      //this.router.navigate(['/pages']);
-      
-    }
+    };
+  }
 }

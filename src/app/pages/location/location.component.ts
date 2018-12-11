@@ -25,7 +25,7 @@ export class LocationComponent implements OnInit {
   showup:boolean = false;
   cities:City[] = [];
   typeLocations:TypeLocation[] = [];
-  commnunes:Commune[] = [];
+  communes:Commune[] = [];
 
 
   constructor(private locationService:LocationService,
@@ -41,23 +41,21 @@ export class LocationComponent implements OnInit {
 
   init(){
     this.model = {
-      id:null,
-      code:null,
+      _id:null,
       name:"",
-      cityId:null,
-      typelocationId:null,
-      communeId:null
+      city:null,
+      typeLocation:null,
+      commune:null
     }
   }
 
   init2(){
     this.modelUp = {
-      id:null,
-      code:null,
+      _id:null,
       name:"",
-      cityId:null,
-      typelocationId:null,
-      communeId:null
+      city:null,
+      typeLocation:null,
+      commune:null
     }
   }
 
@@ -74,26 +72,26 @@ export class LocationComponent implements OnInit {
 
   listLocations(){
     this.locationService.listLocation().subscribe((res:any)=>{
-       this.locations = res; 
+       this.locations = res.locations; 
     });
   }
 
   chargelist(){
     this.cityService.listCity().subscribe((res:any)=>{
-      this.cities = res;
+      this.cities = res.cities;
     });
 
     this.typeLocationService.listTypeLocation().subscribe((res:any)=>{
-      this.typeLocations = res;
+      this.typeLocations = res.typeLocations;
     });
 
     this.communeServcie.listCommunes().subscribe((res:any)=>{
-      this.commnunes = res;
+      this.communes = res.communes;
     });
   }
 
   save(location:Location){
-    if(location.code == null || location.name == "" || location.cityId == null || location.typelocationId == null || location.communeId == null){
+    if(location.name == "" || location.city == null || location.typeLocation == null || location.commune == null){
         swal('Location Required','Name, Code, City, Type Location and Commune','warning');
         return;
     };
@@ -105,7 +103,7 @@ export class LocationComponent implements OnInit {
   }
 
   update(location:Location){
-    if(location.code == null || location.name == "" || location.cityId == null || location.communeId == null || location.typelocationId == null){
+    if(location.name == "" || location.city == null || location.commune == null || location.typeLocation == null){
         swal('Location Required','Name, Code, City, Type Location and Commune','warning');
         return;
     };

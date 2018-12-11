@@ -1,6 +1,6 @@
 export class TypeLocation{
     constructor(
-        public id:number,
+        public _id:number,
         public name:string
     ){}
 }

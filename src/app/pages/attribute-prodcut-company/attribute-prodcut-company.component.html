@@ -19,13 +19,13 @@
                         <tr>
                             <td><input type="number" name="" [(ngModel)]="model.price" class="form-control" placeholder="Price" required></td>
                             <td>
-                                <select class="form-control" name="attributeproductsId" [(ngModel)]="model.attributeproductsId">
-                            <option *ngFor="let ap of attributeP" [ngValue] ="ap.id">{{ap.productsId.name}}</option>
+                                <select class="form-control" name="product" [(ngModel)]="model.product">
+                            <option *ngFor="let ap of products" [ngValue] ="ap._id">{{ap.name}}</option>
                           </select>
                             </td>
                             <td>
-                                <select class="form-control" name="roleId" [(ngModel)]="model.companyId">
-                            <option *ngFor="let company of companies" [ngValue] ="company.id">{{company.name}}</option>
+                                <select class="form-control" name="company" [(ngModel)]="model.company">
+                            <option *ngFor="let company of companies" [ngValue] ="company._id">{{company.name}}</option>
                           </select>
                             </td>
                             <td><button type="button" class="btn btn-success btn-rounded btn-block" (click)="save(model)">Save</button></td>
@@ -58,13 +58,13 @@
                         <tr>
                             <td><input type="number" name="" [(ngModel)]="modelUp.price" class="form-control" placeholder="Price" required></td>
                             <td>
-                                <select class="form-control" name="attributeproductsId" [(ngModel)]="modelUp.attributeproductsId">
-                          <option *ngFor="let ap of attributeP" [ngValue] ="ap.id">{{ap.productsId.name}}</option>
+                                <select class="form-control" name="product" [(ngModel)]="modelUp.product">
+                          <option *ngFor="let ap of products" [ngValue] ="ap._id">{{ap.name}}</option>
                         </select>
                             </td>
                             <td>
-                                <select class="form-control" name="roleId" [(ngModel)]="modelUp.companyId">
-                          <option *ngFor="let company of companies" [ngValue] ="company.id">{{company.name}}</option>
+                                <select class="form-control" name="company" [(ngModel)]="modelUp.company">
+                          <option *ngFor="let company of companies" [ngValue] ="company._id">{{company.name}}</option>
                         </select>
                             </td>
                             <td><button type="button" class="btn btn-primary btn-rounded btn-block" (click)="update(modelUp)">Update</button></td>
@@ -84,7 +84,6 @@
                     <table class="table" id="table">
                         <thead>
                             <tr>
-                                <th scope="col">Id</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Product</th>
                                 <th scope="col">Company</th>
@@ -94,12 +93,11 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let apc of attributePC">
-                                <td>{{apc.id}}</td>
                                 <td>{{apc.price}}</td>
-                                <td>{{apc.attributeproductsId.productsId.name}}</td>
-                                <td>{{apc.companyId.name}}</td>
+                                <td>{{apc.product.name}}</td>
+                                <td>{{apc.company.name}}</td>
                                 <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = apc"></i></td>
-                                <td><i class="fa fa-trash-o pointer" (click)="deleteById(apc.id)"></i></td>
+                                <td><i class="fa fa-trash-o pointer" (click)="deleteById(apc._id)"></i></td>
                             </tr>
                         </tbody>
                     </table>

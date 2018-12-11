@@ -34,14 +34,14 @@ export class CommuneComponent implements OnInit {
 
   init(){
     this.model ={
-      id:null,
+      _id:null,
       name:""
     }
   }
 
   init2(){
     this.modelUp ={
-      id:null,
+      _id:null,
       name:""
     }
   }
@@ -52,7 +52,7 @@ export class CommuneComponent implements OnInit {
 
   listCommunes(){
     this.communeService.listCommunes().subscribe((res:any)=>{
-      this.communes = res;
+      this.communes = res.communes;
     });
   }
 
@@ -73,7 +73,7 @@ export class CommuneComponent implements OnInit {
       return;
     }
 
-    if(commune.id == null){
+    if(commune._id == null){
       swal('Commune id is required','contact technical service','warning');
       return;
     }

@@ -32,31 +32,29 @@ export class CityComponent implements OnInit {
 
   listCities(){
     this.cityService.listCity().subscribe((res:any)=>{
-      this.cities = res;
+      this.cities = res.cities;
     });
   }
 
   listDepartments(){
     this.departmentService.listDepartment().subscribe((res:any)=>{
-      this.departments = res;
+      this.departments = res.departments;
     });
   }
 
   init(){
     this.model = {
-      id:null,
-      code:null,
+      _id:null,
       name:null,
-      departmentId:null
+      department:null
     }
   }
 
   init2(){
     this.modelUp = {
-      id:null,
-      code:null,
+      _id:null,
       name:null,
-      departmentId:null
+      department:null
     }
   }
 
@@ -69,8 +67,8 @@ export class CityComponent implements OnInit {
 
   save(city:City){
 
-    if(city.code == null || city.name == "" || city.departmentId == null){
-        swal('Code, Name and Department is required','','warning');
+    if(city.name == "" || city.department == null){
+        swal('Name and Department is required','','warning');
         return;
     }
 
@@ -84,12 +82,12 @@ export class CityComponent implements OnInit {
   }
 
   update(city:City){
-    if(city.code == null || city.name == "" || city.departmentId == null){
-      swal('Code, Name and Department is required','','warning');
+    if(city.name == "" || city.department == null){
+      swal('Name and Department is required','','warning');
       return;
     }
 
-    if(city.id == null){
+    if(city._id == null){
       swal('Pleasse','id null, contact technical service','warning');
       return;
     }else{

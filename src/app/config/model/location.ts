@@ -4,11 +4,10 @@ import { Commune } from "./commune";
 
 export class Location{
     constructor(
-        public id:number,
-        public code:number,
+        public _id:number,
         public name:string,
-        public cityId:City,
-        public typelocationId:TypeLocation,
-        public communeId:Commune
+        public city:City,
+        public typeLocation:TypeLocation,
+        public commune:Commune
     ){}
 }
