@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../pages/services/user.service';
 import { User } from '../config/model/user';
-import {Md5} from "md5-typescript";
 import { Router } from '@angular/router';
-import { element } from 'protractor';
-import { getTestBed } from '@angular/core/testing';
 
 declare const gapi:any;
 declare function initPlugin();
@@ -70,9 +67,9 @@ export class LoginComponent implements OnInit {
   login(data:NgForm){
 
    let user = new User(null, data.value.email, data.value.password);
-   this.userService.login(user, data.value.rememberme).subscribe(res=>{
-         // this.userService.loginOk();
-          return this.router.navigate(['/pages']);
+   this.userService.login(user, data.value.rememberme).subscribe(() => {
+     // this.userService.loginOk();
+     return this.router.navigate(['/pages']);
    });
   }
 }

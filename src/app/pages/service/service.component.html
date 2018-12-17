@@ -3,7 +3,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-title text-center">
-                Create Product
+                Create Service
                 <i class="fa fa-times-circle pointer" (click)="show = false"></i>
             </div>
             <div class="card-body">
@@ -11,18 +11,24 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Detail</th>
-                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Subline</th>
+                            <th>Company</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input type="text" name="name" [(ngModel)]="model.name" class="form-control" placeholder="name" required></td>
-                            <td><input type="text" name="detail" [(ngModel)]="model.detail" class="form-control" placeholder="Detail"></td>
+                            <td><input type="text" name="name" [(ngModel)]="model.name" class="form-control" placeholder="Name"></td>
+                            <td><input type="text" name="description" [(ngModel)]="model.description" class="form-control" placeholder="description" required></td>
                             <td>
-                                <select class="form-control" name="category" [(ngModel)]="model.subline">
-                                    <option *ngFor="let subline of sublines" [ngValue] ="subline._id">{{subline.name}}</option>
-                                </select>
+                                <select class="form-control" name="subline" [(ngModel)]="model.subline">
+                                  <option *ngFor="let subline of sublines" [ngValue] ="subline._id">{{subline.name}}</option>
+                              </select>
+                            </td>
+                            <td>
+                                <select class="form-control" name="company" [(ngModel)]="model.company">
+                                <option *ngFor="let company of companies" [ngValue] ="company._id">{{company.name}}</option>
+                            </select>
                             </td>
                         </tr>
                         <tr>
@@ -48,18 +54,24 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Detail</th>
-                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Subline</th>
+                            <th>Company</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input type="text" name="name" [(ngModel)]="modelUp.name" class="form-control" placeholder="Name" required></td>
-                            <td><input type="text" name="detail" [(ngModel)]="modelUp.detail" class="form-control" placeholder="Detail"></td>
+                            <td><input type="text" name="name" [(ngModel)]="modelUp.name" class="form-control" placeholder="name"></td>
+                            <td><input type="text" name="description" [(ngModel)]="modelUp.description" class="form-control" placeholder="description" required></td>
                             <td>
                                 <select class="form-control" name="subline" [(ngModel)]="modelUp.subline">
-                                        <option *ngFor="let subline of sublines" [ngValue] ="subline">{{subline.name}}</option>
-                                    </select>
+                              <option *ngFor="let subline of sublines" [ngValue] ="subline._id">{{subline.name}}</option>
+                          </select>
+                            </td>
+                            <td>
+                                <select class="form-control" name="company" [(ngModel)]="modelUp.company">
+                                <option *ngFor="let company of companies" [ngValue] ="company._id">{{company.name}}</option>
+                            </select>
                             </td>
                         </tr>
                         <tr>
@@ -82,27 +94,27 @@
                             <tr>
                                 <th></th>
                                 <th>Name</th>
-                                <th>Detail</th>
-                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Line</th>
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let product of products">
+                            <tr *ngFor="let service of services">
                                 <td>
-                                    <img [src]="product.img | image:'product'" class="rounded-circle w70 pointer" (click)="showModal(product._id)">
+                                    <img [src]="service.img | image:'service'" class="rounded-circle w70 pointer" (click)="showModal(service._id)">
                                 </td>
-                                <td>{{product.name}}</td>
-                                <td>{{product.detail}}</td>
-                                <td>{{product.subline.name}}</td>
-                                <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = product"></i></td>
-                                <td><i class="fa fa-trash-o pointer" (click)="deleteByid(product._id)"></i></td>
+                                <td>{{service.name}}</td>
+                                <td>{{service.description}}</td>
+                                <td>{{service.subline.name}}</td>
+                                <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = service"></i></td>
+                                <td><i class="fa fa-trash-o pointer" (click)="delete(service._id)"></i></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <td><button class="btn btn-success btn-rounded btn-block" (click)="show=true">New Product</button></td>
+                <td><button class="btn btn-success btn-rounded btn-block" (click)="show=true">New Service</button></td>
             </div>
         </div>
     </div>

@@ -22,7 +22,7 @@ export class ProductService {
   }
 
   searchProduct(index:string){
-    let url = API_ROUTE + 'search/all/' + index;
+    let url = API_ROUTE + 'search/product/' + index;
     return this.http.get(url);
   }
 

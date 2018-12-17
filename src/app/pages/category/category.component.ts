@@ -35,14 +35,16 @@ export class CategoryComponent implements OnInit {
   init(){
     this.model = {
       _id:null,
-      name:""
+      name:"",
+      index:null
     }
   }
 
   init2(){
     this.modelUp = {
       _id:null,
-      name:""
+      name:"",
+      index:null
     }
   }
 
@@ -59,7 +61,7 @@ export class CategoryComponent implements OnInit {
 
   save(category:Category){
    
-    if(category.name == ""){
+    if(category.name == "" || category.index == null){
         swal('Pleasse','Enter a name for the category','warning');
         return;
     }
@@ -81,7 +83,7 @@ export class CategoryComponent implements OnInit {
   }
 
   update(category:Category){
-    if(category.name == ""){
+    if(category.name == "" || category.index == null){
       swal('Pleasse','Enter a name for the category','warning');
       return;
     }else{

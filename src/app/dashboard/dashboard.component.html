@@ -1,17 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
-    <a class="navbar-brand font-20 font-bold">Products Yumbo</a>
+    <a class="navbar-brand font-20 font-weight-bold">Productos Yumbo</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle font-bold text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Search</a>
+                <a class="nav-link dropdown-toggle font-bold text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Busque por</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Services</a>
-                    <a class="dropdown-item" href="#">Products</a>
+                    <a class="dropdown-item pointer" (click)="changeList(2)">Services</a>
+                    <a class="dropdown-item pointer" (click)="changeList(1)">Products</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item pointer" href="#">Something else here</a>
                 </div>
             </li>
             <!-- <li class="nav-item text-white">
@@ -25,12 +25,12 @@
         </i>
     </div>
 </nav>
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="!hidden">
     <div class="main-content l">
         <div class="row card-group">
             <div class="col-lg-2 col-md-6" *ngFor="let product of products">
                 <div class="card">
-                    <div class="card-title text-center cardF font-bold">{{product.name}}</div>
+                    <div class="card-title text-center cardF font-weight-bold">{{product.name}}</div>
                     <div class="el-card-item">
                         <div class="el-card-avatar el-overlay-1"> <img [src]="product.img | image:'product'" alt="user" class="img-fluid img" /></div>
                     </div>
@@ -38,6 +38,33 @@
             </div>
         </div>
     </div>
+</div>
+<div class="container-fluid" *ngIf="hidden">
+    <div class="main-content l">
+        <div class="row card-group">
+            <div class="col-lg-2 col-md-6" *ngFor="let service of services">
+                <ngx-flip [flip]="flipDiv">
+                    <div front>Front
+                        <div class="card">
+                            <div class="card-title text-center cardF font-bold">{{service.name}}</div>
+                            <div class="el-card-item">
+                                <div class="el-card-avatar el-overlay-1"> <img [src]="service.img | image:'service'" alt="user" class="img-fluid img" /></div>
+                            </div>
+                            <div class="card-footer">
+                                <div>{{service.description}}</div>
+                                <button type="button" class="btn-primary" (click)="changeFlip()">flip</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div back>Back
+                        <button type="button" class="btn-primary" (click)="changeFlip()">flip</button>
+                    </div>
+                </ngx-flip>
+            </div>
+        </div>
+    </div>
+    <br>
+
 </div>
 
 

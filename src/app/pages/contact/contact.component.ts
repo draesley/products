@@ -93,7 +93,6 @@ export class ContactComponent implements OnInit {
         swal('Contact Required','Code, Name, Last-name, Location and User','warning');
         return;
     }
-
     this.contactService.save(contact);
     this.init();
     this.show = false;

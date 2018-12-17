@@ -31,6 +31,10 @@ export class ImagePipe implements PipeTransform {
         url += '/product/' + img;
       break;
 
+      case 'service':
+        url += '/service/' + img;
+      break;
+
       default:
         swal('Type user, company, product','','info');
     }

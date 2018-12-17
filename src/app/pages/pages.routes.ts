@@ -19,6 +19,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardGuard } from '../services/dashboard.guard';
 import { ProfileComponent } from "./profile/profile.component";
 import { SearchComponent } from "./search/search.component";
+import { ServiceComponent } from './service/service.component';
 
 const pagesRoutes: Routes = [
             {
@@ -99,6 +100,10 @@ const pagesRoutes: Routes = [
                     {
                         path:'search/:index',
                         component:SearchComponent
+                    },
+                    {
+                        path:'service',
+                        component:ServiceComponent
                     }
                 ]
             }

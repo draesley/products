@@ -34,6 +34,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { ImageComponent } from "../component/image/image.component";
 import { ImageService } from "../component/image/image.service";
 import { SearchComponent } from './search/search.component';
+import { ServiceComponent } from './service/service.component';
+import { ServiceService } from "./services/service.service";
 
 /* export function tokenGetter() {
     return localStorage.getItem('access_token');
@@ -62,7 +64,8 @@ import { SearchComponent } from './search/search.component';
         PagesComponent,
         ProfileComponent,
         ImageComponent,
-        SearchComponent
+        SearchComponent,
+        ServiceComponent
     ],
     exports:[
         ProgressComponent,
@@ -85,7 +88,8 @@ import { SearchComponent } from './search/search.component';
         MenuService,
         UploadFileService,
         UserService,
-        ImageService
+        ImageService,
+        ServiceService
     ]
 })
 export class PagesModule{}

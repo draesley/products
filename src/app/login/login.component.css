@@ -37,4 +37,11 @@
     left: 0px;
     position: absolute;
     height: 100%;
+    background: #eeeeee;
+}
+
+.img {
+    width: 900px;
+    height: 700px;
+    float: right;
 }

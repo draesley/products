@@ -54,3 +54,8 @@
 .img {
     height: 200px;
 }
+
+@font-face {
+    font-family: argon;
+    src: url(assets/argon/ArgonPERSONAL-Regular.otf) format("opentype");
+}

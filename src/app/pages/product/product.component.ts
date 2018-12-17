@@ -48,7 +48,6 @@ export class ProductComponent implements OnInit {
   init(){
     this.model = {
       _id:null,
-      code:"",
       name:"",
       img:"",
       detail:"",
@@ -59,7 +58,6 @@ export class ProductComponent implements OnInit {
   init2(){
     this.model ={
       _id:null,
-      code:"",
       name:"",
       img:"",
       detail:"",

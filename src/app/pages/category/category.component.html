@@ -6,6 +6,10 @@
                     <label for="exampleInputEmail1">Create</label>
                     <input type="text" name="name" [(ngModel)]="model.name" class="form-control" aria-describedby="name" placeholder="Name">
                 </div>
+                <div class="form-group">
+                    <label for="index">Index</label>
+                    <input type="number" name="index" [(ngModel)]="model.index" class="form-control" aria-describedby="index" placeholder="Index">
+                </div>
                 <button type="button" class="btn btn-success btn-rounded btn-block" (click)="save(model)">Save</button>
             </div>
         </div>
@@ -16,6 +20,10 @@
                             <i class="fa fa-times-circle pointer" (click)="show = false"></i>
                     </label>
                     <input type="text" name="name" [(ngModel)]="modelUp.name" class="form-control" aria-describedby="name" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="index">Index</label>
+                    <input type="number" name="index" [(ngModel)]="modelUp.index" class="form-control" aria-describedby="index" placeholder="Index">
                 </div>
                 <button type="button" class="btn btn-primary btn-rounded btn-block" (click)=update(modelUp)>Update</button>
             </div>
