@@ -6,71 +6,105 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle font-bold text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Busque por</a>
+                <a class="nav-link dropdown-toggle font-weight-bold text-success" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Busca Por?</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item pointer" (click)="changeList(2)">Services</a>
-                    <a class="dropdown-item pointer" (click)="changeList(1)">Products</a>
+                    <a class="dropdown-item pointer" (click)="changeList(2)">Servicios</a>
+                    <a class="dropdown-item pointer" (click)="changeList(1)">Productos</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item pointer" href="#">Something else here</a>
+                    <a class="dropdown-item">Categorias</a>
+                    <a class="dropdown-item pointer">
+                        <select class="form-control" name="subline" [(ngModel)]="id" (click)="searchForSubline()">
+                            <option *ngFor="let subline of sublines" [ngValue] ="subline._id">{{subline.name}}</option>
+                        </select>
+                    </a>
                 </div>
             </li>
-            <!-- <li class="nav-item text-white">
-            </li> -->
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input #search (keyup)="searchProduct(search.value)" class="form-control" type="text" placeholder="Search Product" aria-label="Search">
         </form>
         <i class="space">
-            <button class="btn btn-primary btn-rounded my-2 my-sm-0" routerLink="/login" type="submit">Login</button>
+            <button class="btn btn-outline-success" type="button" routerLink="/login" type="submit">Login</button>
         </i>
     </div>
 </nav>
-<div class="container-fluid" *ngIf="!hidden">
-    <div class="main-content l">
-        <div class="row card-group">
-            <div class="col-lg-2 col-md-6" *ngFor="let product of products">
-                <div class="card">
-                    <div class="card-title text-center cardF font-weight-bold">{{product.name}}</div>
-                    <div class="el-card-item">
-                        <div class="el-card-avatar el-overlay-1"> <img [src]="product.img | image:'product'" alt="user" class="img-fluid img" /></div>
+<hr>
+<div *ngIf="!show">
+    <div class="container" *ngIf="!hidden">
+        <div class="row">
+            <div class="col-md-3 col-sm-6" *ngFor="let product of products">
+                <div class="product-grid6">
+                    <div class="product-image6">
+                        <a>
+                            <img class="pic-1" [src]="product.img | image:'product'">
+                        </a>
                     </div>
+                    <div class="product-content">
+                        <h3 class="title"><a>{{product.name}}</a></h3>
+                        <!-- <div class="price">$11.00
+                        <span>$14.00</span>
+                    </div> -->
+                    </div>
+                    <ul class="social">
+                        <li><a [routerLink]="['/companies', product._id]" data-tip="buscar"><i class="fa fa-search"></i></a></li>
+                        <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                        <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
                 </div>
+                <hr>
             </div>
         </div>
     </div>
-</div>
-<div class="container-fluid" *ngIf="hidden">
-    <div class="main-content l">
-        <div class="row card-group">
-            <div class="col-lg-2 col-md-6" *ngFor="let service of services">
-                <ngx-flip [flip]="flipDiv">
-                    <div front>Front
-                        <div class="card">
-                            <div class="card-title text-center cardF font-bold">{{service.name}}</div>
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img [src]="service.img | image:'service'" alt="user" class="img-fluid img" /></div>
-                            </div>
-                            <div class="card-footer">
-                                <div>{{service.description}}</div>
-                                <button type="button" class="btn-primary" (click)="changeFlip()">flip</button>
-                            </div>
+    <!-- Services -->
+    <div class="container" *ngIf="hidden">
+        <div class="row">
+            <div class="col-md-3 col-sm-6" *ngFor="let service of services">
+                <div class="product-grid6">
+                    <div class="product-image6">
+                        <a>
+                            <img class="pic-1" [src]="service.img | image:'service'">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title font-italic text-blue"><a>{{service.name}}</a></h3>
+                        <div class="price">$11.00
+                            <span>$14.00</span>
                         </div>
                     </div>
-                    <div back>Back
-                        <button type="button" class="btn-primary" (click)="changeFlip()">flip</button>
-                    </div>
-                </ngx-flip>
+                    <ul class="social">
+                        <li><a [routerLink]="['/companies', service._id]" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                        <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                        <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                </div>
+                <hr>
             </div>
         </div>
     </div>
-    <br>
-
 </div>
-
-
-<!-- <ngx-flip [flip]="flipDiv">
-    <div front>Front</div>
-    <div back>Back</div>
-</ngx-flip>
-
-<button type="button" class="btn-primary" (click)="changeFlip()">flip</button> -->
+<!-- por subline -->
+<div class="container" *ngIf="show">
+    <div class="row">
+        <div class="col-md-3 col-sm-6" *ngFor="let product of sublineProduct">
+            <div class="product-grid6">
+                <div class="product-image6">
+                    <a>
+                        <img class="pic-1" [src]="product.img | image:'product'">
+                    </a>
+                </div>
+                <div class="product-content">
+                    <h3 class="title"><a>{{product.name}}</a></h3>
+                    <!-- <div class="price">$11.00
+                        <span>$14.00</span>
+                    </div> -->
+                </div>
+                <ul class="social">
+                    <li><a [routerLink]="['/companies', product._id]" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                    <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                    <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                </ul>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>

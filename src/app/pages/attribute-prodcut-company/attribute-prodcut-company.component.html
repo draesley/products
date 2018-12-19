@@ -11,13 +11,15 @@
                     <thead>
                         <tr>
                             <th scope="col">Price</th>
+                            <th scope="col">secondprice</th>
                             <th scope="col">Product</th>
                             <th scope="col">Company</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input type="number" name="" [(ngModel)]="model.price" class="form-control" placeholder="Price" required></td>
+                            <td><input type="number" name="price" [(ngModel)]="model.price" class="form-control" placeholder="Price" required></td>
+                            <td><input type="number" name="secondprice" [(ngModel)]="model.secondprice" class="form-control" placeholder="Secund Price"></td>
                             <td>
                                 <select class="form-control" name="product" [(ngModel)]="model.product">
                             <option *ngFor="let ap of products" [ngValue] ="ap._id">{{ap.name}}</option>
@@ -50,13 +52,15 @@
                     <thead>
                         <tr>
                             <th scope="col">Price</th>
+                            <th scope="col">Secund Price</th>
                             <th scope="col">Product</th>
                             <th scope="col">Company</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input type="number" name="" [(ngModel)]="modelUp.price" class="form-control" placeholder="Price" required></td>
+                            <td><input type="number" name="price" [(ngModel)]="modelUp.price" class="form-control" placeholder="Price" required></td>
+                            <td><input type="number" name="secondprice" [(ngModel)]="modelUp.secondprice" class="form-control" placeholder="secondprice"></td>
                             <td>
                                 <select class="form-control" name="product" [(ngModel)]="modelUp.product">
                           <option *ngFor="let ap of products" [ngValue] ="ap._id">{{ap.name}}</option>
@@ -85,6 +89,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">Price</th>
+                                <th scope="col">secondprice</th>
                                 <th scope="col">Product</th>
                                 <th scope="col">Company</th>
                                 <th scope="col">Update</th>
@@ -94,6 +99,7 @@
                         <tbody>
                             <tr *ngFor="let apc of attributePC">
                                 <td>{{apc.price}}</td>
+                                <td>{{apc.secondprice}}</td>
                                 <td>{{apc.product.name}}</td>
                                 <td>{{apc.company.name}}</td>
                                 <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = apc"></i></td>

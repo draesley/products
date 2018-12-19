@@ -18,6 +18,7 @@ import { FlipModule } from 'ngx-flip';
 import { DashboardGuard } from './services/dashboard.guard';
 import { ImageService } from './component/image/image.service';
 import { PipesModule } from './pipes/pipes.module';
+import { CompaniesModule } from './companies/companies.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PipesModule } from './pipes/pipes.module';
     HttpClientModule,
     SharedModule,
     FlipModule,
-    PipesModule
+    PipesModule,
+    CompaniesModule
   ],
   providers: [
     DashboardGuard,

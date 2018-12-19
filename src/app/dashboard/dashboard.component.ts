@@ -5,6 +5,9 @@ import { Menu } from '../config/model/menu';
 import { MenuService } from '../services/menu.service';
 import { ServiceService } from '../pages/services/service.service';
 import { Service } from '../config/model/service';
+import { Category } from '../config/model/category';
+import { CategoryService } from '../pages/services/category.service';
+import { Subline } from '../config/model/subline';
 
 declare function initPlugin();
 
@@ -16,19 +19,25 @@ declare function initPlugin();
 export class DashboardComponent implements OnInit {
 
   products:Product[] = [];
+  sublineProduct:Product[] = [];
   flipDiv:boolean = false;
   menu:Menu[] = [];
   services:Service[] = [];
   hidden:boolean = false;
+  sublines:Subline[] = [];
+  id:string = "";
+  show:boolean = false;
 
   constructor(private productService:ProductService,
               public menuService:MenuService,
-              public serviceService:ServiceService) { }
+              public serviceService:ServiceService,
+              public categoryService:CategoryService) { }
 
   ngOnInit() {
     initPlugin();
     this.listProducts();
     this.ListServices();
+    this.listSublines();
   }
 
   changeFlip(){
@@ -45,8 +54,26 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  searchProduct(index:string){
+  listSublines(){
+    this.categoryService.listSubLines().subscribe((res:any)=>{
+        this.sublines = res.sublines;
+    });
+  }
 
+  searchForSubline(){
+    if(this.id == null)
+    {
+      return;
+    };
+
+    this.productService.searchForSublines(this.id).subscribe((res:any)=>{
+        this.show = true;
+        this.sublineProduct = res.products;
+    });
+
+  }
+
+  searchProduct(index:string){
 
     switch(this.hidden){
       case false:
@@ -84,11 +111,13 @@ export class DashboardComponent implements OnInit {
         this.services = [];
         this.listProducts();
         this.hidden = false;
+        this.show = false;
       break;
       case 2:
         this.products = [];
-        this.hidden = true;
         this.ListServices();
+        this.hidden = true;
+        this.show = false;
       break;
     }
   }

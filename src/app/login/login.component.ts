@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
 
    let user = new User(null, data.value.email, data.value.password);
    this.userService.login(user, data.value.rememberme).subscribe(() => {
-     // this.userService.loginOk();
+     this.userService.loginOk();
      return this.router.navigate(['/pages']);
    });
   }

@@ -22,6 +22,11 @@ export class AttributeproductCompanyService {
     return this.http.get(url);
   }
 
+  listCompaniesForProduct(id:string){
+    let url = API_ROUTE + 'productCompany/' + id;
+    return this.http.get(url);
+  }
+
   save(attriProCom:AttributeProductCompany){
     let url = API_ROUTE + 'productCompany';
     url += '?token=' + this.userService.token;

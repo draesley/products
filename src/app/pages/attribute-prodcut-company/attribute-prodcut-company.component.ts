@@ -41,6 +41,7 @@ export class AttributeProdcutCompanyComponent implements OnInit {
     this.model = {
       _id:"",
       price:null,
+      secondprice:null,
       company:null,
       product:null
     };
@@ -50,6 +51,7 @@ export class AttributeProdcutCompanyComponent implements OnInit {
     this.modelUp = {
       _id:"",
       price:null,
+      secondprice:null,
       company:null,
       product:null
     };

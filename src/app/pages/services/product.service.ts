@@ -26,6 +26,16 @@ export class ProductService {
     return this.http.get(url);
   }
 
+  searchForSublines(subline:string){
+    let url = API_ROUTE + 'product/subline/' + subline;
+    return this.http.get(url);
+  }
+
+  findById(id:string){
+    let url = API_ROUTE + 'product/' + id;
+    return this.http.get(url);
+  }
+
   save(product:Product){
     let url = API_ROUTE + 'product';
     url += '?token=' + this.userService.token;

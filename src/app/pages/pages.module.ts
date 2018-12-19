@@ -22,20 +22,13 @@ import { CompanyComponent } from './company/company.component';
 import { AttributeproductComponent } from './attributeproduct/attributeproduct.component';
 import { AttributeProdcutCompanyComponent } from './attribute-prodcut-company/attribute-prodcut-company.component';
 import { PagesComponent } from "./pages.component";
-import { ContactService } from './services/contact.service';
-import { JwtModule } from '@auth0/angular-jwt';
-import { MenuService } from "../services/menu.service";
 import { PipesModule } from "../pipes/pipes.module";
-import { UploadFileService } from "./services/upload-file.service";
 import { AngularSplitModule } from 'angular-split';
-import { RouterModule } from '@angular/router';
-import { UserService } from "./services/user.service";
 import { ProfileComponent } from './profile/profile.component';
 import { ImageComponent } from "../component/image/image.component";
-import { ImageService } from "../component/image/image.service";
 import { SearchComponent } from './search/search.component';
 import { ServiceComponent } from './service/service.component';
-import { ServiceService } from "./services/service.service";
+import { ServicesModule } from './services/services.module';
 
 /* export function tokenGetter() {
     return localStorage.getItem('access_token');
@@ -82,14 +75,15 @@ import { ServiceService } from "./services/service.service";
         FormsModule,
         PipesModule,
         AngularSplitModule,
+        ServicesModule
     ],
     providers:[
-        ContactService,
+       /*  ContactService,
         MenuService,
         UploadFileService,
         UserService,
         ImageService,
-        ServiceService
+        ServiceService */
     ]
 })
 export class PagesModule{}

@@ -5,6 +5,7 @@ import { RegisterComponent } from './login/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagesComponent } from './pages/pages.component';
 import { DashboardGuard } from './services/dashboard.guard';
+import { CompaniesComponent } from './companies/companies.component';
 
 
 const appRoutes: Routes = [
@@ -19,6 +20,10 @@ const appRoutes: Routes = [
     {
         path:'register',
         component:RegisterComponent
+    },
+    {
+        path:'companies/:id',
+        component:CompaniesComponent
     },
     {
         path:'',
