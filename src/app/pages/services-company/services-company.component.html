@@ -1,0 +1,109 @@
+<!-- save attribut product company-->
+<div class="row" *ngIf="show">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-title text-center">
+                Create Service Company
+                <i class="fa fa-times-circle pointer" (click)="show = false"></i>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-5">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description" name="description" [(ngModel)]="model.description" rows="4"></textarea>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="lastname">Company</label>
+                            <select class="form-control" name="Company" [(ngModel)]="model.company">
+                                <option *ngFor="let company of companies" [ngValue] ="company._id">{{company.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="service">Service</label>
+                            <select class="form-control" name="service" [(ngModel)]="model.service">
+                                <option *ngFor="let service of services" [ngValue] ="service._id">{{service.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <button type="button" class="btn btn-success btn-rounded btn-block" (click)="save(model)">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- cierre save -->
+<!-- open update -->
+<div class="row" *ngIf="showup">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-title text-center">
+                Update Product Company
+                <i class="fa fa-times-circle pointer" (click)="showup = false"></i>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-5">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description" name="description" [(ngModel)]="modelUp.description" rows="4"></textarea>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="lastname">Company</label>
+                            <select class="form-control" name="Company" [(ngModel)]="modelUp.company">
+                                <option *ngFor="let company of companies" [ngValue] ="company._id">{{company.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="service">Service</label>
+                            <select class="form-control" name="service" [(ngModel)]="modelUp.service">
+                                <option *ngFor="let service of services" [ngValue] ="service._id">{{service.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <td><button type="button" class="btn btn-info btn-rounded btn-block" (click)="update(modelUp)">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- close update -->
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-wrapper-scroll-y">
+                <div class="table-responsive">
+                    <table class="table" id="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Description</th>
+                                <th scope="col">Company</th>
+                                <th scope="col">Service</th>
+                                <th scope="col">Update</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let service of servicesCompany">
+                                <td>{{service.description}}</td>
+                                <td>{{service.company.name}}</td>
+                                <td>{{service.service.name}}</td>
+                                <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = service"></i></td>
+                                <td><i class="fa fa-trash-o pointer" (click)="deleteById(service._id)"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <td><button class="btn btn-success btn-rounded" (click)="show=true">New Service Company</button></td>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

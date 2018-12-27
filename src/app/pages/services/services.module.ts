@@ -6,6 +6,7 @@ import { MenuService } from 'src/app/services/menu.service';
 import { UploadFileService } from './upload-file.service';
 import { UserService } from './user.service';
 import { ImageService } from 'src/app/component/image/image.service';
+import { ServicesCompanyService } from './services-company.service';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { ImageService } from 'src/app/component/image/image.service';
     UploadFileService,
     UserService,
     ImageService,
-    ServiceService
+    ServiceService,
+    ServicesCompanyService
   ]
 })
 export class ServicesModule { }

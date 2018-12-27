@@ -21,6 +21,12 @@ export class CompanyService {
     return this.http.get(url);
   }
 
+  companyPaginado(index:number = 0){
+    let url = API_ROUTE + 'company/pagina';
+    url += '?index=' + index;
+    return this.http.get(url);
+  }
+
   save(company:Company){
     let url = API_ROUTE + 'company';
     url += '?token=' + this.userService.token;
@@ -39,7 +45,7 @@ export class CompanyService {
     });
   }
 
-  deleteById(id:number){
+  deleteById(id:string){
     let url = API_ROUTE + 'company/' + id;
     url += '?token=' + this.userService.token;
     this.http.delete(url).subscribe(()=>{

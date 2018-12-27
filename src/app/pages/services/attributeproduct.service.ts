@@ -32,7 +32,6 @@ export class AttributeproductService {
   }
 
   update(attributepro:AttributeProduct){
-    console.log(attributepro);
     let url = API_ROUTE + 'attributeProduct/' + attributepro._id;
     url += '?token=' + this.userService.token;
     this.http.put(url,attributepro).subscribe(()=>{

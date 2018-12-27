@@ -21,6 +21,11 @@ export class ServiceService {
     return this.http.get(url);
   }
 
+  findById(id:string){
+    let url = API_ROUTE + 'services/' + id;
+    return this.http.get(url);
+  }
+
   searchService(index:string){
     let url = API_ROUTE + 'search/service/' + index;
     return this.http.get(url);

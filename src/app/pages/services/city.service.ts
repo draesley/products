@@ -31,7 +31,7 @@ export class CityService {
   }
 
   update(city:City){
-    let url = API_ROUTE + 'city/update/' + city._id;
+    let url = API_ROUTE + 'city/' + city._id;
     url += '?token=' + this.userService.token;
     this.http.put(url,city).subscribe(()=>{
       swal('City Update','','success');

@@ -7,6 +7,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { UploadFileService } from './upload-file.service';
 import { map } from 'rxjs/operators';
+import { Company } from 'src/app/config/model/company';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class UserService {
   user:User;
   menu:any[] = [];
   role:string = "";
+  company:Company;
   
   constructor(private http:HttpClient,
               private router:Router,
@@ -54,10 +56,12 @@ export class UserService {
   logOut(){
     this.user = null;
     this.token ="";
+    this.company = null;
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('menu');
     localStorage.removeItem('id');
+    localStorage.removeItem('company');
     this.router.navigate(['/']);
   }
   
@@ -129,6 +133,9 @@ export class UserService {
     let url = API_ROUTE + 'login';
     return this.http.post(url,user).pipe(
       map( (res:any)=>{
+        console.log(res);
+        localStorage.setItem('company', JSON.stringify(res.company));
+        this.company = res.company;
         this.localStorageSave(res.user._id, res.token, res.user, res.menu);
         this.loginOk();
         return true;

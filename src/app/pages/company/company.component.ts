@@ -36,7 +36,7 @@ export class CompanyComponent implements OnInit {
 
   init(){
     this.model = {
-      _id:null,
+      _id:"",
       nit:"",
       name:"",
       adress:"",
@@ -52,7 +52,7 @@ export class CompanyComponent implements OnInit {
 
   init2(){
     this.modelUp = {
-      _id:null,
+      _id:"",
       nit:"",
       name:"",
       adress:"",
@@ -106,7 +106,7 @@ export class CompanyComponent implements OnInit {
       return;
     };
 
-    if(company._id == null){
+    if(company._id == ""){
       swal('contact technical service','Company Id is required','warning');
       return;
     };
@@ -117,7 +117,7 @@ export class CompanyComponent implements OnInit {
     this.render();
   }
 
-  deleteById(id:number){
+  deleteById(id:string){
     if(id == null){
       swal('contact technical service','Company Id is required','warning');
       return;

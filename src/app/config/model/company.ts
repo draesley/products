@@ -3,7 +3,7 @@ import { Location } from './location';
 
 export class Company{
     constructor(
-        public _id:number,
+        public _id:string,
         public nit:string,
         public name:string,
         public adress:string,

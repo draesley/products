@@ -14,7 +14,9 @@ declare function initPlugin();
   styleUrls: ['./companies.component.css']
 })
 export class CompaniesComponent implements OnInit {
-
+  
+  index:number = 0;
+  totalFiles:number= 0;
   product:Product;
   companies:AttributeProductCompany[] = [];
 
@@ -54,8 +56,6 @@ export class CompaniesComponent implements OnInit {
   listCompanies(id:string){
     this.companiesProduct.listCompaniesForProduct(id).subscribe((res:any)=>{
         this.companies = res.companies;
-        console.log(this.companies);
     });
   }
-
 }

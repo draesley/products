@@ -21,15 +21,15 @@ import { ContactComponent } from './contact/contact.component';
 import { CompanyComponent } from './company/company.component';
 import { AttributeproductComponent } from './attributeproduct/attributeproduct.component';
 import { AttributeProdcutCompanyComponent } from './attribute-prodcut-company/attribute-prodcut-company.component';
-import { PagesComponent } from "./pages.component";
 import { PipesModule } from "../pipes/pipes.module";
 import { AngularSplitModule } from 'angular-split';
 import { ProfileComponent } from './profile/profile.component';
 import { ImageComponent } from "../component/image/image.component";
-import { SearchComponent } from './search/search.component';
 import { ServiceComponent } from './service/service.component';
 import { ServicesModule } from './services/services.module';
-
+import { PagesComponent } from "./pages.component";
+import { ServicesCompanyService } from "./services/services-company.service";
+import { ServicesCompanyComponent } from './services-company/services-company.component';
 /* export function tokenGetter() {
     return localStorage.getItem('access_token');
   } */
@@ -56,9 +56,9 @@ import { ServicesModule } from './services/services.module';
         AttributeProdcutCompanyComponent,
         PagesComponent,
         ProfileComponent,
+        ServiceComponent,
         ImageComponent,
-        SearchComponent,
-        ServiceComponent
+        ServicesCompanyComponent
     ],
     exports:[
         ProgressComponent,
@@ -66,7 +66,7 @@ import { ServicesModule } from './services/services.module';
         AttributeComponent,
         CategoryComponent,
         ProductComponent,
-        PagesComponent
+        PagesComponent,
     ],
     imports:[
         SharedModule,
@@ -75,7 +75,7 @@ import { ServicesModule } from './services/services.module';
         FormsModule,
         PipesModule,
         AngularSplitModule,
-        ServicesModule
+        ServicesModule,
     ],
     providers:[
        /*  ContactService,

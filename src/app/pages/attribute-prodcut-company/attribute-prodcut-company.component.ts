@@ -8,6 +8,9 @@ import { AttributeproductService } from '../../pages/services/attributeproduct.s
 import { CompanyService } from '../../pages/services/company.service';
 import { ProductService } from '../services/product.service';
 import { Product } from '../../config/model/product';
+import { UserService } from '../services/user.service';
+
+declare function initPlugin();
 
 @Component({
   selector: 'app-attribute-product-company',
@@ -26,15 +29,22 @@ export class AttributeProdcutCompanyComponent implements OnInit {
   companies:Company[] = [];
   show:boolean = false;
   showup:boolean = false;
+  company:Company;
 
   constructor(private APCService:AttributeproductCompanyService,
               private productService:ProductService,
-              private companyService:CompanyService) { }
+              private companyService:CompanyService,
+              public userService:UserService) { 
+                this.company = this.userService.company;
+              }
 
   ngOnInit() {
+    initPlugin();
     this.init();
+    //this.initCompany();
     this.listAPC();
     this.chargeList();
+
   }
 
   init(){
@@ -45,6 +55,22 @@ export class AttributeProdcutCompanyComponent implements OnInit {
       company:null,
       product:null
     };
+  }
+
+  initCompany(){
+    this.company = {
+      _id:"",
+      nit:"",
+      name:"",
+      adress:"",
+      phon:null,
+      movil:null,
+      img:"",
+      email:"",
+      location:null,
+      contact:null,
+
+    }
   }
 
   init2(){
@@ -65,10 +91,17 @@ export class AttributeProdcutCompanyComponent implements OnInit {
   }
 
   listAPC(){
-    this.APCService.listAttributeProductCompany().subscribe((res:any)=>{
-      
+    if(this.userService.user.role.name === 'user'){
+      this.APCService.listProductForCompany(this.company._id).subscribe((res:any)=>{
+        this.attributePC = res.products;
+        console.log(res); 
+      });
+
+    }else{
+      this.APCService.listAttributeProductCompany().subscribe((res:any)=>{
         this.attributePC = res.productCompany;
-    });
+      });
+    }
   }
 
   chargeList(){

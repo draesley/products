@@ -21,6 +21,12 @@ export class ProductService {
     return this.http.get(url);
   }
 
+  productPaginado(index:number = 0){
+    let url = API_ROUTE + 'product/pagina';
+    url += '?index=' + index;
+    return this.http.get(url);
+  }
+
   searchProduct(index:string){
     let url = API_ROUTE + 'search/product/' + index;
     return this.http.get(url);

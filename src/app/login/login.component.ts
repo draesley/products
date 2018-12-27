@@ -29,10 +29,10 @@ export class LoginComponent implements OnInit {
     if(this.email.length > 0){
       this.rememberme = true;
     }
-    this.googleInit();
+    //this.googleInit();
   }
 
-  googleInit(){
+ /*  googleInit(){
     gapi.load('auth2', ()=>{
       this.auth2 = gapi.auth2.init({
         client_id:"321737821544-hhnsrpur58sbodbh202olual3ptprava.apps.googleusercontent.com",
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
         return this.router.navigate(['/pages']);
       });
     });
-  } 
+  } */ 
 
   signOut() {
       this.auth2 = gapi.auth2.getAuthInstance();
@@ -65,10 +65,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(data:NgForm){
-
    let user = new User(null, data.value.email, data.value.password);
    this.userService.login(user, data.value.rememberme).subscribe(() => {
-     this.userService.loginOk();
+     //this.userService.loginOk();
      return this.router.navigate(['/pages']);
    });
   }

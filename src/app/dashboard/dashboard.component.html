@@ -20,6 +20,7 @@
                 </div>
             </li>
         </ul>
+        <a class="navbar-brand font-20 font-italic">Total Productos: {{totalFiles}}</a>
         <form class="form-inline my-2 my-lg-0">
             <input #search (keyup)="searchProduct(search.value)" class="form-control" type="text" placeholder="Search Product" aria-label="Search">
         </form>
@@ -30,7 +31,7 @@
 </nav>
 <hr>
 <div *ngIf="!show">
-    <div class="container" *ngIf="!hidden">
+    <div class="container-fluid" *ngIf="!hidden">
         <div class="row">
             <div class="col-md-3 col-sm-6" *ngFor="let product of products">
                 <div class="product-grid6">
@@ -54,6 +55,27 @@
                 <hr>
             </div>
         </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link pagination-sm" (click)="changepage(-20)" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#">6</a></li>
+                <li class="page-item"><a class="page-link" href="#">7</a></li>
+                <li class="page-item"><a class="page-link" href="#">8</a></li>
+                <li class="page-item"><a class="page-link" href="#">9</a></li>
+                <li class="page-item"><a class="page-link" href="#">10</a></li>
+                <li class="page-item"><a class="page-link" href="#">11</a></li>
+                <li class="page-item"><a class="page-link" href="#">12</a></li>
+                <li class="page-item">
+                    <a class="page-link" (click)="changepage(20)">Next</a>
+                </li>
+            </ul>
+        </nav>
     </div>
     <!-- Services -->
     <div class="container" *ngIf="hidden">
@@ -67,12 +89,12 @@
                     </div>
                     <div class="product-content">
                         <h3 class="title font-italic text-blue"><a>{{service.name}}</a></h3>
-                        <div class="price">$11.00
+                        <!-- <div class="price">$11.00
                             <span>$14.00</span>
-                        </div>
+                        </div> -->
                     </div>
                     <ul class="social">
-                        <li><a [routerLink]="['/companies', service._id]" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                        <li><a [routerLink]="['/company-service', service._id]" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
                         <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                         <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                     </ul>

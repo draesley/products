@@ -5,8 +5,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { NopagefoundComponent } from './shared/nopagefound/nopagefound.component';
 import { APP_ROUTES } from './app.routes';
-import { RegisterComponent } from './login/register.component';
-import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -18,19 +16,20 @@ import { FlipModule } from 'ngx-flip';
 import { DashboardGuard } from './services/dashboard.guard';
 import { ImageService } from './component/image/image.service';
 import { PipesModule } from './pipes/pipes.module';
-import { CompaniesModule } from './companies/companies.module';
+
+import { PagesModule } from './pages/pages.module';
+import { CompaniesModule } from './companies.product/companies.module';
+import { CompanyServiceModule } from './companies.service/company-service.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NopagefoundComponent,
-    RegisterComponent,
     DashboardComponent,
   ],
   imports: [
     BrowserModule,
-    PagesModule,
     APP_ROUTES,
     FormsModule,
     CommonModule,
@@ -39,7 +38,9 @@ import { CompaniesModule } from './companies/companies.module';
     SharedModule,
     FlipModule,
     PipesModule,
-    CompaniesModule
+    CompaniesModule,
+    CompanyServiceModule,
+    PagesModule
   ],
   providers: [
     DashboardGuard,

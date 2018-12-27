@@ -7,43 +7,51 @@
                 <i class="fa fa-times-circle pointer" (click)="show = false"></i>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-responsive">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nit</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Adress</th>
-                            <th scope="col">Phon</th>
-                            <th scope="col">Movil</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Contact</th>
-                            <th scope="col">Location</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="text" name="nit" [(ngModel)]="model.nit" class="form-control" placeholder="Nit" required></td>
-                            <td><input type="text" name="name" [(ngModel)]="model.name" class="form-control" placeholder="Name" required></td>
-                            <td><input type="text" name="adress" [(ngModel)]="model.adress" class="form-control" placeholder="Adress" required></td>
-                            <td><input type="number" name="phon" [(ngModel)]="model.phon" class="form-control" placeholder="Phon" required></td>
-                            <td><input type="number" name="movil" [(ngModel)]="model.movil" class="form-control" placeholder="Movil" required></td>
-                            <td><input type="email" name="email" [(ngModel)]="model.email" class="form-control" placeholder="Email" required></td>
-                            <td>
-                                <select class="form-control" name="contact" [(ngModel)]="model.contact">
-                                <option *ngFor="let contact of contacts" [ngValue] ="contact._id">{{contact.name}}</option>
-                              </select>
-                            </td>
-                            <td>
-                                <select class="form-control" name="role" [(ngModel)]="model.location">
-                                <option *ngFor="let location of locations" [ngValue] ="location._id">{{location.name}}</option>
-                              </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><button type="button" class="btn btn-success btn-rounded btn-block" (click)="save(model)">Save</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="nit">Nit</label>
+                            <input type="text" name="nit" [(ngModel)]="model.nit" class="form-control" placeholder="Nit" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="nit">Nombre</label>
+                            <input type="text" name="name" [(ngModel)]="model.name" class="form-control" placeholder="Name" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="adress">Dirección</label>
+                            <input type="text" name="adress" [(ngModel)]="model.adress" class="form-control" placeholder="Adress" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="fijo">Fijo</label>
+                            <input type="number" name="phon" [(ngModel)]="model.phon" class="form-control" placeholder="Phon">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="movil">Movil</label>
+                            <input type="number" name="movil" [(ngModel)]="model.movil" class="form-control" placeholder="Movil" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" [(ngModel)]="model.email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="contact">Contacto</label>
+                            <select class="form-control" name="contact" [(ngModel)]="model.contact">
+                                        <option *ngFor="let contact of contacts" [ngValue] ="contact._id">{{contact.name}}</option>
+                                      </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="location">Barrio</label>
+                            <select class="form-control" name="location" [(ngModel)]="model.location">
+                                            <option *ngFor="let location of locations" [ngValue] ="location._id">{{location.name}}</option>
+                                          </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <button type="button" class="btn btn-success btn-rounded btn-block" (click)="save(model)">Save</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -58,43 +66,51 @@
                 <i class="fa fa-times-circle pointer" (click)="showup = false"></i>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-responsive">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nit</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Adress</th>
-                            <th scope="col">Phon</th>
-                            <th scope="col">Movil</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Contact</th>
-                            <th scope="col">Location</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="text" name="nit" [(ngModel)]="modelUp.nit" class="form-control" placeholder="Nit" required></td>
-                            <td><input type="text" name="name" [(ngModel)]="modelUp.name" class="form-control" placeholder="Name" required></td>
-                            <td><input type="text" name="adress" [(ngModel)]="modelUp.adress" class="form-control" placeholder="Adress" required></td>
-                            <td><input type="number" name="phon" [(ngModel)]="modelUp.phon" class="form-control" placeholder="Phon" required></td>
-                            <td><input type="number" name="movil" [(ngModel)]="modelUp.movil" class="form-control" placeholder="Movil" required></td>
-                            <td><input type="email" name="email" [(ngModel)]="modelUp.email" class="form-control" placeholder="Email" required></td>
-                            <td>
-                                <select class="form-control" name="contact" [(ngModel)]="modelUp.contact">
-                                <option *ngFor="let contact of contacts" [ngValue] ="contact._id">{{contact.name}}</option>
-                              </select>
-                            </td>
-                            <td>
-                                <select class="form-control" name="role" [(ngModel)]="modelUp.location">
-                                <option *ngFor="let location of locations" [ngValue] ="location._id">{{location.name}}</option>
-                              </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><button type="button" class="btn btn-primary btn-rounded btn-block" (click)="update(modelUp)">Update</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="nit">Nit</label>
+                            <input type="text" name="nit" [(ngModel)]="modelUp.nit" class="form-control" placeholder="Nit" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="nit">Nombre</label>
+                            <input type="text" name="name" [(ngModel)]="modelUp.name" class="form-control" placeholder="Name" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="adress">Dirección</label>
+                            <input type="text" name="adress" [(ngModel)]="modelUp.adress" class="form-control" placeholder="Adress" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="fijo">Fijo</label>
+                            <input type="number" name="phon" [(ngModel)]="modelUp.phon" class="form-control" placeholder="Phon">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="movil">Movil</label>
+                            <input type="number" name="movil" [(ngModel)]="modelUp.movil" class="form-control" placeholder="Movil" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" [(ngModel)]="modelUp.email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="contact">Contacto</label>
+                            <select class="form-control" name="contact" [(ngModel)]="modelUp.contact">
+                                                <option *ngFor="let contact of contacts" [ngValue] ="contact._id">{{contact.name}}</option>
+                                              </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="location">Barrio</label>
+                            <select class="form-control" name="location" [(ngModel)]="modelUp.location">
+                                                    <option *ngFor="let location of locations" [ngValue] ="location._id">{{location.name}}</option>
+                                                  </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <button type="button" class="btn btn-success btn-rounded btn-block" (click)="update(modelUp)">Save</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -104,40 +120,38 @@
     <div class="card">
         <div class="card-body">
             <div class="table-wrapper-scroll-y">
-                <div class="table-responsive">
-                    <table class="table" id="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nit</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Adress</th>
-                                <th scope="col">Phon</th>
-                                <th scope="col">Movil</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Contact</th>
-                                <th scope="col">Location</th>
-                                <th scope="col">Update</th>
-                                <th scope="col">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let company of companies">
-                                <td>{{company.nit}}</td>
-                                <td>{{company.name}}</td>
-                                <td>{{company.adress}}</td>
-                                <td>{{company.phon}}</td>
-                                <td>{{company.movil}}</td>
-                                <td>{{company.email}}</td>
-                                <td>{{company.contact.name}}</td>
-                                <td>{{company.location.name}}</td>
-                                <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = company"></i></td>
-                                <td><i class="fa fa-trash-o pointer" (click)="deleteById(company._id)"></i></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <td><button class="btn btn-success btn-rounded" (click)="show=true">New Company</button></td>
+                <table class="table-responsive font-17">
+                    <thead class="font-17">
+                        <tr>
+                            <th scope="col">Nit</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Adress</th>
+                            <th scope="col">Phon</th>
+                            <th scope="col">Movil</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">Location</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let company of companies">
+                            <td>{{company.nit}}</td>
+                            <td>{{company.name}}</td>
+                            <td>{{company.adress}}</td>
+                            <td>{{company.phon}}</td>
+                            <td>{{company.movil}}</td>
+                            <td>{{company.email}}</td>
+                            <td>{{company.contact.name}}</td>
+                            <td>{{company.location.name}}</td>
+                            <td><i class="fa fa-edit pointer" (click)="showup = true; modelUp = company"></i></td>
+                            <td><i class="fa fa-trash-o pointer" (click)="deleteById(company._id)"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+            <button class="btn btn-success btn-rounded" (click)="show=true">New Company</button>
         </div>
     </div>
 </div>

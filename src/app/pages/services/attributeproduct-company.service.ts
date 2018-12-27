@@ -22,8 +22,20 @@ export class AttributeproductCompanyService {
     return this.http.get(url);
   }
 
+  listProductForCompany(id:string){
+    console.log(id+"este es el id" );
+    let url = API_ROUTE + 'productCompany/company/' + id;
+    return this.http.get(url);
+  }
+
   listCompaniesForProduct(id:string){
     let url = API_ROUTE + 'productCompany/' + id;
+    return this.http.get(url);
+  }
+
+  companiesPaginado(index:number = 0, id){
+    let url = API_ROUTE + 'productCompany/pagina/' + id;
+    url += '?index=' + index;
     return this.http.get(url);
   }
 

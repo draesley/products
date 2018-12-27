@@ -27,6 +27,8 @@ export class DashboardComponent implements OnInit {
   sublines:Subline[] = [];
   id:string = "";
   show:boolean = false;
+  index:number = 0;
+  totalFiles:number= 0;
 
   constructor(private productService:ProductService,
               public menuService:MenuService,
@@ -35,9 +37,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     initPlugin();
-    this.listProducts();
+    //this.listProducts();
     this.ListServices();
     this.listSublines();
+    this.productsPaginado();
   }
 
   changeFlip(){
@@ -48,11 +51,35 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  listProducts(){
+  changepage(index:number){
+
+      let control = this.index + index;
+
+      if(control >= this.totalFiles){
+        return;
+      }
+
+      if(control < 0){
+        return;
+      }
+
+      this.index += index;
+    
+      this.productsPaginado();
+  }
+
+  /* listProducts(){
       this.productService.listProduct().subscribe((res:any)=>{
         this.products = res.products;
       });
-  }
+  } */
+
+  productsPaginado(){
+    this.productService.productPaginado(this.index).subscribe((res:any)=>{
+      this.products = res.products;
+      this.totalFiles = res.total;     
+    });
+}
 
   listSublines(){
     this.categoryService.listSubLines().subscribe((res:any)=>{
@@ -78,14 +105,14 @@ export class DashboardComponent implements OnInit {
     switch(this.hidden){
       case false:
         if(index.length <= 0){
-          this.listProducts();
+          this.productsPaginado();
           return;
         }
         this.productService.searchProduct(index).subscribe((res:any)=>{
           this.products = res.products;
         });
       break;
-      case true:{
+      case true:
         if(index.length <= 0){
           this.ListServices();
           return;
@@ -93,10 +120,8 @@ export class DashboardComponent implements OnInit {
         this.serviceService.searchService(index).subscribe((res:any)=>{
           this.services = res.services;
         });
-      }
+      break;
     }
-   
-   
   }
 
   ListServices(){
@@ -109,7 +134,7 @@ export class DashboardComponent implements OnInit {
     switch(index){
       case 1:
         this.services = [];
-        this.listProducts();
+        this.productsPaginado();
         this.hidden = false;
         this.show = false;
       break;

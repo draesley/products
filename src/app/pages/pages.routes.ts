@@ -18,8 +18,8 @@ import { AttributeProdcutCompanyComponent } from "./attribute-prodcut-company/at
 import { PagesComponent } from './pages.component';
 import { DashboardGuard } from '../services/dashboard.guard';
 import { ProfileComponent } from "./profile/profile.component";
-import { SearchComponent } from "./search/search.component";
 import { ServiceComponent } from './service/service.component';
+import { ServicesCompanyComponent } from "./services-company/services-company.component";
 
 const pagesRoutes: Routes = [
             {
@@ -98,8 +98,8 @@ const pagesRoutes: Routes = [
                         component:AttributeProdcutCompanyComponent
                     },
                     {
-                        path:'search/:index',
-                        component:SearchComponent
+                        path:'services-company',
+                        component:ServicesCompanyComponent
                     },
                     {
                         path:'service',

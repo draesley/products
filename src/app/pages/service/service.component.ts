@@ -46,7 +46,6 @@ export class ServiceComponent implements OnInit {
       description:"",
       img:"",
       subline:null,
-      company:null
     };
   }
 
@@ -57,7 +56,6 @@ export class ServiceComponent implements OnInit {
       description:"",
       img:"",
       subline:null,
-      company:null
     };
   }
 
@@ -89,11 +87,11 @@ export class ServiceComponent implements OnInit {
   }
 
   search(index:string){
-
+       
   }
 
   save(service:Service){
-    if(service.name == "" || service.description == "" || service.subline == null || service.company == null){
+    if(service.name == "" || service.description == "" || service.subline == null){
       swal('Product','The Name, Description, subline and Category fields are required','warning');
       return;
   }
@@ -105,7 +103,7 @@ export class ServiceComponent implements OnInit {
 
   update(service:Service){
 
-    if(service.name == "" || service.description == "" || service.subline == null || service.company== null){
+    if(service.name == "" || service.description == "" || service.subline == null){
       swal('Product','The Name, Description, subline and Category fields are required','warning');
       return;
     }

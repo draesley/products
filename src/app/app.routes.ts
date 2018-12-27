@@ -1,11 +1,11 @@
 import { Routes, RouterModule } from '@angular/router'
 import { LoginComponent } from './login/login.component';
 import { NopagefoundComponent } from './shared/nopagefound/nopagefound.component';
-import { RegisterComponent } from './login/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagesComponent } from './pages/pages.component';
 import { DashboardGuard } from './services/dashboard.guard';
-import { CompaniesComponent } from './companies/companies.component';
+import { CompaniesComponent } from './companies.product/companies.component';
+import { CompanyServiceComponent } from './companies.service/company-service.component';
 
 
 const appRoutes: Routes = [
@@ -18,12 +18,12 @@ const appRoutes: Routes = [
         component:LoginComponent
     },
     {
-        path:'register',
-        component:RegisterComponent
-    },
-    {
         path:'companies/:id',
         component:CompaniesComponent
+    },
+    {
+        path:'company-service/:id',
+        component:CompanyServiceComponent
     },
     {
         path:'',

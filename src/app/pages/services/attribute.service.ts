@@ -4,7 +4,6 @@ import { API_ROUTE } from '../../config/apirute';
 import swal from 'sweetalert';
 import { Attribute } from '../../config/model/attribute';
 import { Subject } from 'rxjs';
-import { httpOptions } from '../../config/headers';
 import { UserService } from './user.service';
 
 
@@ -46,6 +45,6 @@ export class AttributeService {
     let url =`${API_ROUTE + 'attribute/' + id}`;
     url += '?token=' + this.userService.token;
     this.subject.next();
-    return this.http.delete(url,httpOptions);
+    return this.http.delete(url);
   }
 }

@@ -7,7 +7,6 @@ export class Service{
         public name:string,
         public description:string,
         public img:string,
-        public company:Company,
         public subline:Subline
     ){}
 }
