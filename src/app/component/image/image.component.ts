@@ -12,14 +12,10 @@ export class ImageComponent implements OnInit {
   imgTemp:any;
 
   constructor(public uploadService:UploadFileService,
-              public imageService:ImageService) { 
-    
-  }
+              public imageService:ImageService) { }
 
   ngOnInit() {
   }
-
- 
 
   hiddenModal(){
     this.uploadimg = null;
@@ -50,7 +46,6 @@ export class ImageComponent implements OnInit {
 
   }
 
-
   uploadImgs(){
     this.uploadService.uploadFile(this.uploadimg, this.imageService.type, this.imageService.id)
     .then(res => {
@@ -61,5 +56,4 @@ export class ImageComponent implements OnInit {
       console.log("error en la carga");
     })
   }
-
 }

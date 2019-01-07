@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../../services/sidebar.service';
-import { MenuService } from '../../services/menu.service';
 import { UserService } from '../../pages/services/user.service';
 import { Menu } from '../../config/model/menu';
 import { User } from '../../config/model/user';

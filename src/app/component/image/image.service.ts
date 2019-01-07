@@ -11,10 +11,7 @@ export class ImageService {
   @Output()
   public emitter = new EventEmitter<any>();
 
-
-  constructor() {
-    
-   }
+  constructor() {}
 
    showModal(type:string, id:string){
       this.oculto = "";

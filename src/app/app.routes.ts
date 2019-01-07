@@ -6,6 +6,7 @@ import { PagesComponent } from './pages/pages.component';
 import { DashboardGuard } from './services/dashboard.guard';
 import { CompaniesComponent } from './companies.product/companies.component';
 import { CompanyServiceComponent } from './companies.service/company-service.component';
+import { HomeComponent } from './home/home.component';
 
 
 const appRoutes: Routes = [
@@ -24,6 +25,10 @@ const appRoutes: Routes = [
     {
         path:'company-service/:id',
         component:CompanyServiceComponent
+    },
+    {
+        path:'home',
+        component:HomeComponent
     },
     {
         path:'',

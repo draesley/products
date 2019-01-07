@@ -6,6 +6,7 @@ import { LocationService } from '../../pages/services/location.service';
 import { ContactService } from '../../pages/services/contact.service';
 import { Location } from '../../config/model/location';
 import { Contact } from '../../config/model/contact';
+import { ImageService } from 'src/app/component/image/image.service';
 
 @Component({
   selector: 'app-company',
@@ -26,7 +27,8 @@ export class CompanyComponent implements OnInit {
 
   constructor(private companyService:CompanyService,
               private locationService:LocationService,
-              private contactService:ContactService) { }
+              private contactService:ContactService,
+              public imageService:ImageService) { }
 
   ngOnInit() {
     this.init();
@@ -70,6 +72,10 @@ export class CompanyComponent implements OnInit {
         this.listCompanies();
         this.emitter.emit(true);
       });
+  }
+
+  showModal(id:string){
+    this.imageService.showModal('company', id);
   }
 
   listCompanies(){

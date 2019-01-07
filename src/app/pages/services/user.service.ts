@@ -28,7 +28,6 @@ export class UserService {
               private router:Router,
               private uploadFileService:UploadFileService) { 
               this.loadStorage();
-              //this.logOut();
               }
 
   loadStorage(){
@@ -133,7 +132,6 @@ export class UserService {
     let url = API_ROUTE + 'login';
     return this.http.post(url,user).pipe(
       map( (res:any)=>{
-        console.log(res);
         localStorage.setItem('company', JSON.stringify(res.company));
         this.company = res.company;
         this.localStorageSave(res.user._id, res.token, res.user, res.menu);

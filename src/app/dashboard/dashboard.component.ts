@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../config/model/product';
 import { ProductService } from '../pages/services/product.service';
 import { Menu } from '../config/model/menu';
-import { MenuService } from '../services/menu.service';
 import { ServiceService } from '../pages/services/service.service';
 import { Service } from '../config/model/service';
 import { Category } from '../config/model/category';
@@ -31,13 +30,11 @@ export class DashboardComponent implements OnInit {
   totalFiles:number= 0;
 
   constructor(private productService:ProductService,
-              public menuService:MenuService,
               public serviceService:ServiceService,
               public categoryService:CategoryService) { }
 
   ngOnInit() {
     initPlugin();
-    //this.listProducts();
     this.ListServices();
     this.listSublines();
     this.productsPaginado();
@@ -67,12 +64,6 @@ export class DashboardComponent implements OnInit {
     
       this.productsPaginado();
   }
-
-  /* listProducts(){
-      this.productService.listProduct().subscribe((res:any)=>{
-        this.products = res.products;
-      });
-  } */
 
   productsPaginado(){
     this.productService.productPaginado(this.index).subscribe((res:any)=>{
@@ -146,5 +137,4 @@ export class DashboardComponent implements OnInit {
       break;
     }
   }
-
 }

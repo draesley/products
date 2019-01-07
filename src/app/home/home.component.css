@@ -1,0 +1,20 @@
+/* cambiar tipo de letra */
+
+nav.navbar ul.nav li {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+nav a {
+    color: #FFFFFF;
+}
+
+
+/* cambiar el color de fondo a la barra */
+
+nav.navbar {
+    background: -webkit-linear-gradient(60deg, black 15%, gray 100%);
+    background: -moz-linear-gradient(60deg, black 15%, gray 100%);
+    background: -ms-linear-gradient(60deg, black 15%, gray 100%);
+    background: -o-linear-gradient(60deg, black 15%, gray 100%);
+    background: linear-gradient(60deg, black 15%, gray 100%);
+}

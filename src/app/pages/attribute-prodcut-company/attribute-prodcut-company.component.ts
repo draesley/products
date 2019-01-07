@@ -35,13 +35,14 @@ export class AttributeProdcutCompanyComponent implements OnInit {
               private productService:ProductService,
               private companyService:CompanyService,
               public userService:UserService) { 
+                this.initCompany();
                 this.company = this.userService.company;
               }
 
   ngOnInit() {
-    initPlugin();
-    this.init();
     //this.initCompany();
+   //initPlugin();
+    this.init();
     this.listAPC();
     this.chargeList();
 
@@ -94,7 +95,6 @@ export class AttributeProdcutCompanyComponent implements OnInit {
     if(this.userService.user.role.name === 'user'){
       this.APCService.listProductForCompany(this.company._id).subscribe((res:any)=>{
         this.attributePC = res.products;
-        console.log(res); 
       });
 
     }else{

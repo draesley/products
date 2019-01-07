@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Service } from '../config/model/service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ServiceService } from '../pages/services/service.service';
-import { Company } from '../config/model/company';
 import { ServicesCompanyService } from '../pages/services/services-company.service';
 import { ServiceCompany } from '../config/model/serviceCompany';
 
